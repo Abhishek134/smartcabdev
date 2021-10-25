@@ -1,0 +1,647 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="#"></ion-back-button>
+        </ion-buttons>
+        <!--<ion-title>REGISTER</ion-title>-->
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-background">
+    <div class="bgreg" style=" filter: blur(0.2px);">
+        <div class="ion-text-center" style="padding: 40px; color: white!important;">
+            DRIVER
+        </div>
+    </div>
+
+    <div>
+        <form #registerForm="ngForm">
+            <ion-item-divider style="background-color: #bcceed!important; color: whitesmoke!important; ">
+                <div style="width: 100%; text-align: center;">REGISTRATION FORM</div>
+            </ion-item-divider>
+
+            <!-- STEP 1-->
+            <div *ngIf="step == 1">
+
+                <ion-list lines="none">
+
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Name <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                        </ion-label>
+                        <ion-input
+                                type="text"
+                                style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                                [(ngModel)]="userInfo.first_name"
+                                required
+                                name="first_name"
+                                ngModel
+                                #ufirst_name="ngModel"
+                                placeholder="Enter Name"
+                        >
+                        </ion-input>
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="ufirst_name.touched && !ufirst_name.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="ufirst_name.errors.required">Please Enter First Name</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Surname <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="text"
+                                style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                                [(ngModel)]="userInfo.surname"
+                                required
+                                name="surname"
+                                ngModel
+                                #usurname="ngModel"
+                                placeholder="Enter Surname"
+                        >
+                        </ion-input>
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="usurname.touched && !usurname.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="usurname.errors.required">Please Enter Surname</p>
+
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">{{'EMAIL_ADDRESS'| translate}} <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                        </ion-label>
+                        <ion-input
+                                style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                                type="email"
+                                [(ngModel)]="userInfo.email"
+                                name="email"
+                                ngModel
+                                #uemail="ngModel"
+                                required
+                                placeholder="Enter Email"
+                        ></ion-input>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="uemail.touched && !uemail.valid">
+                             *ngIf="uemail.touched && !uemail.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="uemail.errors.required">Enter correct email</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">{{'PASSWORD'| translate}} (MIN 6 CHAR) <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                        </ion-label>
+                        <ion-input
+                                type="password"
+                                [(ngModel)]="userInfo.password"
+                                style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                                name="password"
+                                ngModel
+                                #upassword="ngModel"
+                                required
+                                placeholder="Enter Password"
+                        ></ion-input>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="upassword.touched && !upassword.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="upassword.errors.required">Enter valid Password</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Repeat Password <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="password"
+                                [(ngModel)]=userInfo.repassword
+                                name="repassword"
+                                ngModel
+                                #urepassword="ngModel"
+                                required
+                                placeholder="Enter Password Again"
+                        ></ion-input>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="urepassword.touched && !urepassword.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="urepassword.errors.required">Repeat Correct Password</p>
+                            </ion-text>
+                        </div>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">{{'PHONE_NUMBER'| translate}} <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="tel"
+                                [(ngModel)]="userInfo.phoneNumber"
+                                name="phone"
+                                ngModel
+                                #uphone="ngModel"
+                                required
+                                placeholder="Enter Phone Number"
+                                minlength="10"
+                        ></ion-input>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="uphone.touched && !uphone.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="uphone.errors.required">Enter Phone Number</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Gender <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <br/>
+                        <ion-select
+                                [(ngModel)]="userInfo.genders"
+                                style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                                required="true"
+                                placeholder=" Select your Gender"
+                                name="genders"
+                                ngModel
+                                #ugender="ngModel"
+                        >
+                            <ion-select-option value="FEMALE">FEMALE</ion-select-option>
+                            <ion-select-option value="MALE">MALE</ion-select-option>
+                        </ion-select>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="ugender.touched && !ugender.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="ugender.errors.required">Select Your Gender</p>
+                            </ion-text>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Country <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="text"
+                                [(ngModel)]="userInfo.country"
+                                name="country"
+                                ngModel
+                                #ucountry="ngModel"
+                                required
+                                placeholder="Enter Country"
+                                minlength="10"
+                        ></ion-input>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="ucountry.touched && !ucountry.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="ucountry.errors.required">Enter Country</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">City <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="text"
+                                [(ngModel)]="userInfo.city"
+                                name="city"
+                                ngModel
+                                #ucity="ngModel"
+                                required
+                                placeholder="Enter City"
+
+                        ></ion-input>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="ucity.touched && !ucity.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="ucity.errors.required">Enter City</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">District <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="text"
+                                [(ngModel)]="userInfo.district"
+                                name="district"
+                                ngModel
+                                #udistrict="ngModel"
+                                required
+                                placeholder="Enter District"
+
+                        ></ion-input>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="udistrict.touched && !udistrict.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="udistrict.errors.required">Enter District</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Referral ID For Rewards (Optional)
+                        </ion-label>
+                        <ion-input
+                                type="text"
+                                [(ngModel)]="userInfo.referenceid"
+                                name="referenceid"
+                                ngModel
+                                    placeholder="Enter Registered Driver ID"></ion-input>
+                    </ion-item>
+
+                </ion-list>
+
+            </div>
+
+            <div *ngIf="step == 2">
+                <ion-list lines="none">
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Operation Region <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <br/>
+                        <ion-select
+                                [(ngModel)]="userInfo.region"
+                                style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                                required="true"
+                                placeholder=" Select your Region"
+                                required="true"
+                                name="region"
+                                ngModel
+                                #uregion="ngModel"
+                        >
+                            <ion-select-option value="Central Uganda">CENTRAL UGANDA</ion-select-option>
+                            <ion-select-option value="Eastern Uganda">EASTERN UGANDA</ion-select-option>
+                            <ion-select-option value="Western Uganda">WESTERN UGANDA</ion-select-option>
+                            <ion-select-option value="Northern Uganda">NORTHERN UGANDA</ion-select-option>
+                        </ion-select>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="uregion.touched && !uregion.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="uregion.errors.required">Select Your Region</p>
+                            </ion-text>
+                        </div>
+
+
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Ride Type <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <br/>
+                        <ion-select
+                                [(ngModel)]="userInfo.transporter"
+                                style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                                placeholder=" Select your Ride"
+                                required="true"
+                                name="account"
+                                ngModel
+                                #uaccount="ngModel"
+                        >
+                            <ion-select-option value="Boda">SMART BIKE</ion-select-option>
+
+                            <ion-select-option value="cheap_cars">SMART GO MINI</ion-select-option>
+                            <!--<ion-select-option value="MINI">MINI VEHICLE</ion-select-option>-->
+                            <ion-select-option value="XL">SMART GO XL</ion-select-option>
+
+                            <!--<ion-select-option value="Executive_Cars">Executive Cars</ion-select-option>-->
+                        </ion-select>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="uaccount.touched && !uaccount.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="uaccount.errors.required">Select Account Type</p>
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Ride Make <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="text"
+                                [(ngModel)]="userInfo.brand"
+                                required
+                                name="fullname"
+                                ngModel
+                                #ubrand="ngModel"
+                                placeholder="Enter Ride Make">
+                        </ion-input>
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="ubrand.touched && !ubrand.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="ubrand.errors.required">Please Enter Ride Make</p>
+
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Registration Number <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="text"
+                                [(ngModel)]="userInfo.plate"
+                                required
+                                name="plate"
+                                ngModel
+                                #uplate="ngModel"
+                                placeholder="Enter Registration Number">
+                        </ion-input>
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="uplate.touched && !uplate.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="uplate.errors.required">Please Enter Registration Number</p>
+
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" style="color: #ffffff">Ride Color <span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <ion-input
+                                type="text"
+                                [(ngModel)]="userInfo.color"
+                                required
+                                name="color"
+                                ngModel
+                                #ucolor="ngModel"
+                                placeholder="Enter Ride Color">
+                        </ion-input>
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="ucolor.touched && !ucolor.valid">
+                            <ion-text color="danger">
+                                <p *ngIf="ucolor.errors.required">Please Enter Ride Color</p>
+
+                            </ion-text>
+                        </div>
+
+                    </ion-item>
+
+                </ion-list>
+            </div>
+
+            <div *ngIf="step == 3">
+                <ion-list lines="none">
+                    <ion-card no-padding>
+
+                        <!-- perez code -->
+                        <!--<ion-button (click)="pickImage()">-->
+                            <!--Pick Image-->
+                        <!--</ion-button>-->
+                        <!--<h5 *ngIf="croppedImagepath.length">Cropped Image</h5>-->
+
+                        <!--<p *ngIf="isLoading">Loading ...</p>-->
+
+                        <!--<img [src]="croppedImagepath" />-->
+                        <!-- perez end code -->
+
+                        <ion-card-header>
+                            <ion-card-subtitle style="color: white!important;">1: Profile Photo</ion-card-subtitle>
+                            <ion-card-title></ion-card-title>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <!--                        <input type="file" (change)="uploadId($event)">-->
+                            <ng-container *ngIf="userInfo.photo2URL">
+                                <ion-img [src]="userInfo.photo2URL"></ion-img>
+                            </ng-container>
+                            <div *ngIf="(photoPercent$ | async) as percentage">
+                                Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                                <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                            </div>
+                            <ion-button slot="end" expand="block" (click)="choosePhoto()">Photo</ion-button>
+                            <div>
+                                <form ngNoForm>
+                                    <input id="passphoto" name="file" type="file" (change)="uploadPhoto()" hidden>
+                                </form>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+
+                    <ion-card no-padding>
+                        <ion-card-header>
+                            <ion-card-subtitle style="color: white!important;">2: Upload National ID Front View <span
+                                    style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-card-subtitle>
+                            <ion-card-title></ion-card-title>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <!--                        <input type="file" (change)="uploadId($event)">-->
+                            <ng-container *ngIf="userInfo.ninFront">
+                                <ion-img [src]="userInfo.ninFront"></ion-img>
+                            </ng-container>
+                            <div *ngIf="(iduploadPercent$ | async) as percentage">
+                                Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                                <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                            </div>
+                            <ion-button slot="end" expand="block" (click)="chooseDocs()"> National ID FRONT</ion-button>
+                            <div>
+                                <form ngNoForm>
+                                    <input id="ninFront" name="file" type="file" (change)="uploadDocs()" hidden required>
+                                </form>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+
+                    <ion-card no-padding>
+                        <ion-card-header>
+                            <ion-card-subtitle style="color: white!important;">3: Upload National ID Back View <span
+                                    style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-card-subtitle>
+                            <ion-card-title></ion-card-title>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <!--                        <input type="file" (change)="uploadId($event)">-->
+                            <ng-container *ngIf="userInfo.ninBack">
+                                <ion-img [src]="userInfo.ninBack"></ion-img>
+                            </ng-container>
+                            <div *ngIf="(idbackuploadPercent$ | async) as percentage">
+                                Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                                <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                            </div>
+                            <ion-button slot="end" expand="block" (click)="chooseNinBack()"> National ID BACK
+                            </ion-button>
+                            <div>
+                                <form ngNoForm>
+                                    <input id="ninBack" name="file" type="file" (change)="uploadNinBack()" hidden>
+                                </form>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+
+                    <ion-card no-padding  *ngIf="userInfo.transporter !== 'Boda'">
+                        <ion-card-header>
+                            <ion-card-subtitle style="color: white!important;">4: Upload Driving Permit <span
+                                    style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-card-subtitle>
+                            <ion-card-title></ion-card-title>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <!--                        <input type="file" (change)="uploadId($event)">-->
+                            <ng-container *ngIf="userInfo.permitURL">
+                                <ion-img [src]="userInfo.permitURL"></ion-img>
+                            </ng-container>
+
+                            <div *ngIf="(permituploadPercent$ | async) as percentage">
+                                Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                                <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                            </div>
+                            <ion-button slot="end" expand="block" (click)="choosePermit()"> DRIVER PERMIT</ion-button>
+                            <div>
+                                <form ngNoForm>
+                                    <input id="permit" name="file" type="file" (change)="uploadPermit()" hidden>
+                                </form>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+
+                    <ion-card no-padding>
+                        <ion-card-header>
+                            <ion-card-subtitle style="color: white!important;">6: Upload Ride Photo <span
+                                    style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-card-subtitle>
+                            <ion-card-title></ion-card-title>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <!--                        <input type="file" (change)="uploadId($event)">-->
+                            <ng-container *ngIf="userInfo.vehicleURL">
+                                <ion-img [src]="userInfo.vehicleURL"></ion-img>
+                            </ng-container>
+
+                            <div *ngIf="(vehicleloadPercent$ | async) as percentage">
+                                Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                                <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                            </div>
+                            <ion-button slot="end" expand="block" (click)="chooseVehicle()"> RIDE PHOTO</ion-button>
+                            <div>
+                                <form ngNoForm>
+                                    <input id="vehicle" name="file" type="file" (change)="uploadVehicle()" hidden>
+                                </form>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+
+
+                    <ion-item>
+                        <ion-label position="stacked" style="color: white"><a href="#" >I Accept Terms & Conditions</a><span
+                                style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                        <div style="color: white!important;">
+                            <ion-checkbox
+
+                                    slot="start"
+                                    [(ngModel)]="userInfo.isAccepted"
+
+                                    name="terms"
+                                    ngModel
+                                    #uaccept="ngModel"
+                                    required
+                                    color="light"
+                                    checked="true"
+                                    style="color: white!important;"
+                            ></ion-checkbox>
+                        </div>
+
+                        <div style="color: white!important; text-align: center!important;"
+                             *ngIf="uaccept.touched && !uaccept.valid">
+                            <ion-text color="primary">
+                                <p *ngIf="uaccept.errors.required">Please Read and accept Terms</p>
+                            </ion-text>
+
+
+                        </div>
+
+                    </ion-item>
+
+
+                </ion-list>
+
+
+            </div>
+
+
+        </form>
+    </div>
+
+    <div class="signin-btns">
+        <ion-button fill="solid" shape="round" class="loginbtn" *ngIf="step != 1" (click)="previousPage()">Previous
+        </ion-button>
+        <ion-button fill="outline" shape="round" color="light" *ngIf="step == 3" (click)="signup()"
+                    [disabled]="!registerForm.valid && !userInfo.isAccepted">Submit
+        </ion-button>
+        <ion-button fill="solid" shape="round" class="loginbtn" (click)="nextPage()" *ngIf="step != 3">Next</ion-button>
+
+    </div>
+
+    <ion-button fill="clear" expand="block" (click)="openModal()"
+                style="color: white">
+        Terms & Conditions
+    </ion-button>
+
+
+</ion-content>
+
+<!-- Footer without a border -->
+<!--<ion-footer text-center no-border transparent>-->
+<!--<ion-toolbar>-->
+<!--<ion-grid>-->
+<!--<ion-row>-->
+<!--<ion-col size="6" padding>-->
+<!--<ion-button color="newcolor" shape="round" *ngIf="step != 1" expand="block" size="small"-->
+<!--(click)="previousPage()"-->
+<!--style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;">-->
+<!--<ion-icon name="rewind"></ion-icon>-->
+<!--Previous-->
+<!--</ion-button>-->
+
+<!--</ion-col>-->
+<!--<ion-col size="6" padding>-->
+<!--<ion-button color="newcolor" shape="round" size="small" expand="block"-->
+<!--(click)="nextPage()" *ngIf="step != 3" [disabled]="!userInfo.name"-->
+<!--style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;"> Next-->
+<!--<ion-icon name="fastforward"></ion-icon>-->
+<!--</ion-button>-->
+
+<!--<ion-button *ngIf="step == 3"-->
+<!--expand="block"-->
+<!--color="newcolor"-->
+<!--size="small"-->
+<!--style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;"-->
+<!--(click)="signup()"-->
+<!--[disabled]="!registerForm.valid && !userInfo.isAccepted"-->
+<!--&gt;<p style="color: #ffffff!important;">{{'REGISTER' | translate}}</p>-->
+<!--</ion-button>-->
+
+<!--</ion-col>-->
+<!--</ion-row>-->
+
+<!--</ion-grid>-->
+
+<!--</ion-toolbar>-->
+<!--</ion-footer>-->
+

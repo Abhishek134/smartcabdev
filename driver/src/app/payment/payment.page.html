@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="#"></ion-back-button>
+            <div class="ion-text-center">
+                <ion-title>Cash Commissions Trips</ion-title>
+            </div>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!--let timestamp = new Date(this.deposits.createdAt.seconds * 1000).toLocaleDateString("en-US")-->
+    <div class="ion-text-center widhdraw-header">
+
+        <h2 style="font-size: 1rem;"><code
+                style="background-color: #c30707; border-radius: 10px; padding: 2px!important;">
+            <b *ngIf="(driver)?.commission_balance">DEBT UGX: {{ (driver)?.commission_balance }}/=</b>
+            <b *ngIf="(driver)?.commission_balance == 0">DEBT UGX: 0.00/=</b>
+
+        </code></h2>
+        <br/>
+        <h3>Commissions To Pay Back</h3>
+        <!--<h2>UGX</h2>-->
+        <!--<ion-button color="newcolor" (click)="payNow()" *ngIf="(driver)?.commission_balance > 0">PAY SMARTCABS</ion-button>-->
+        <ion-button color="newcolor" (click)="payNow()">PAY SMARTCABS</ion-button>
+    </div>
+
+    <ion-list>
+        <ion-item-divider style="color: #606060;">
+            Deduction History
+        </ion-item-divider>
+        <ion-item *ngFor="let record of payments">
+            <ion-label>
+                <ion-text color="medium">
+                    <!--<p>{{ record.createdAt | amDateFormat: 'YYYY-MM-DD hh:mm a'}}</p>-->
+                    <p>Date: {{ record.createAt | amDateFormat: 'YYYY-MM-DD hh:mm a'}}</p>
+                </ion-text>
+                <ion-text>
+                    <p *ngIf="record.paymentMethod  == 'Wallet Pay'">Your Payment of <strong>{{currency}} {{
+                        record.amount }}/=</strong>
+                        was received <br/>from <code
+                                style="background-color: #82c300; border-radius: 10px; padding: 2px!important;">{{
+                            record.paymentMethod }}</code> <br/>New Wallet Balance is {{ record.wallet_balance}} /=
+                        <br/>and your commision balance is <code
+                                style="color: red!important;">{{ record.commission_balance}}/=</code>
+                    </p>
+
+                    <p *ngIf="record.paymentMethod  == 'Mobile M Pay'">
+                        Your Payment of <strong>{{currency}} {{ record.amount }}/=</strong>
+                        was received <br/>from <code
+                            style="background-color: #92d6eb; border-radius: 10px; padding: 2px!important;">{{
+                        record.paymentMethod }}</code> Account <br/>and your commision balance is <code
+                            style="color: red!important;">{{ record.commission_balance}}/=</code> TelecomRef ID is {{
+                        record.telecomId }}
+
+                    </p>
+
+
+                    <p></p>
+                </ion-text>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

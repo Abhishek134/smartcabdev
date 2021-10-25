@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>promos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div style="display: flex;">
+    <div style="flex: 3">
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Code</th>
+          <th>Percentage</th>
+          <th>More</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let code of promocodes;let i = index">
+            <td>
+              {{promocodes[i].title}}
+            </td>
+            <td>
+              {{promocodes[i].code}}
+            </td>
+            <td>
+              {{promocodes[i].discount}}
+            </td>
+            <td>
+              <ion-button fill="clear" size="small" (click)="edit(promocodes[i])">Edit</ion-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="flex:1;">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input type="text" [(ngModel)]="newpromocode.title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">CODE</ion-label>
+          <ion-input type="text" [(ngModel)]="newpromocode.code"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Discount Percentage</ion-label>
+          <ion-input type="text" [(ngModel)]="newpromocode.discount" placeholder="without % symbol"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding">
+        <ion-button *ngIf="!isEdit" size="small" expand="block" (click)="add()">Add</ion-button>
+        <ion-button *ngIf="isEdit" size="small" expand="block" (click)="update()">Update</ion-button>
+        <ion-button *ngIf="isEdit" fill="clear" expand="block" color="danger" size="small" (click)="delete()">Delete
+        </ion-button>
+        &nbsp;&nbsp;
+        <ion-button *ngIf="isEdit" fill="clear" expand="block" size="small" (click)="reset()">Reset</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

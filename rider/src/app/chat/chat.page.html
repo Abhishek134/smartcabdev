@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+
+    <div class="ion-text-center" style="padding-left: 20px;">
+      <ion-label style="color: white!important;">CHAT WITH DRIVER</ion-label>
+    </div>
+    <ion-button size="small" slot="end" (click)="closeModal()" color="primary">
+      <ion-icon ios="ios-arrow-down" md="md-arrow-down"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!--message me message you-->
+
+  <div class="chat" *ngFor="let message of messages">
+    <div class="message me" *ngIf="message.isDriver == 'yes'">
+      <small style="color: white">Driver: {{ message.driverName}}</small><br/>
+      {{ message.message}}</div>
+    <div class="message you" *ngIf="message.isDriver != 'yes'">
+      <small style="color: white">Me:</small><br/>{{ message.message}}</div>
+
+  </div>
+
+
+  <!--<div id="chatMessages">-->
+    <!--<div class="message" *ngFor="let message of messages">-->
+      <!--&lt;!&ndash;<div class="innerMessage">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="message">{{message.message}}</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--<ion-card>-->
+        <!--<ion-item color="primary">-->
+          <!--&lt;!&ndash;<ion-icon name="pin" slot="start"></ion-icon>&ndash;&gt;-->
+          <!--<ion-avatar slot="start">-->
+            <!--<img src="{{message.photoURL}}" />-->
+          <!--</ion-avatar>-->
+          <!--<ion-label>{{message.message}}</ion-label>-->
+        <!--</ion-item>-->
+
+
+
+      <!--</ion-card>-->
+
+    <!--</div>-->
+  <!--</div>-->
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="ion-padding">
+    <!--<ion-label>Chat</ion-label>-->
+    <div id="footer" style="margin-top: -30px!important;">
+      <ion-row>
+        <ion-col size="10">
+          <ion-input type="text" [(ngModel)]="message" color="dark"
+                     style="border-radius: 5px!important;"></ion-input>
+        </ion-col>
+
+        <ion-col size="2">
+          <div style="padding-top: 10px!important;">
+            <ion-button icon-only color="dark" (click)="sendChat()">
+              <ion-icon name="send"></ion-icon>
+            </ion-button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+
+

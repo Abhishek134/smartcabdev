@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cancelled Trips - {{trips.length}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!--<div>-->
+    <!--From: <input type="date" max={{today}} [(ngModel)]="startDate" />-->
+    <!--To: <input type="date" min={{startDate}} max={{today}} [(ngModel)]="endDate" />-->
+    <!--<ion-button fill="outline" size="small" (click)="filter()">Filter</ion-button>-->
+  <!--</div>-->
+  <br>
+  <p *ngIf="trips.length == 0" style="color: red!important;"><b>No Trips Found</b></p>
+  <p *ngIf="trips.length != 0">{{trips.length}} Trips Found</p>
+  <table *ngIf="trips.length != 0">
+    <thead>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Fee</th>
+    </thead>
+    <tbody *ngFor="let trip of trips">
+    <tr>
+      <td>
+        <!--<p>{{trip.createdAt}}</p>-->
+        <p>{{ trip.createdAt | date: 'MMM dd, yyyy hh:mm a'}}</p>
+      </td>
+      <td>
+        <p>From: {{ trip.origin.vicinity }} - {{ trip.pickedUpAt | date: 'shortTime'}}</p>
+        <p>To: {{ trip.destination.vicinity }} - {{ trip.droppedOffAt | date: 'shortTime'}}</p>
+        <p>Status: {{ trip.status}}</p>
+        <ion-button size="small" fill="clear" color="primary" routerLink="/driverinfo/{{trip.driverId}}">View Driver
+        </ion-button>
+        <ion-button size="small" fill="clear" color="primary" routerLink="/passengerinfo/{{trip.passengerId}}">View
+          Rider
+        </ion-button>
+      </td>
+      <td class="pricing">
+        <p>Fee: {{trip.currency}} {{trip.rawfee}} ({{ trip.paymentMethod }})</p>
+        <p>Discount {{trip.discount}} %</p>
+        <p>Tax: {{trip.tax}} %</p>
+          <p>Driver Commission: {{trip.currency}} {{trip.commission}}</p>
+          <p>Total Cost: {{trip.currency}} {{trip.fee}}</p>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ion-content>

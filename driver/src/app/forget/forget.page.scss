@@ -1,0 +1,33 @@
+
+
+.bglogin {
+  background-image: url('../../assets/img/dp4.jpg');
+  background-repeat: no-repeat;
+  height: 200px;
+  background-size: cover;
+  filter: blur(3px);
+  background-position: center center;
+  position: relative;
+
+  padding-top: auto;
+  margin: auto;
+
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+
+  // mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/sun.svg);
+  //mask-image: url(../../assets/images/blob.svg);
+  //mask-size: 100vmin;
+  //mask-repeat: no-repeat;
+  //mask-position: center;
+}
+
+ion-content {
+  --ion-background-color: #191349;
+}
+
+ion-toolbar {
+  //--background: transparent;
+  //--ion-color-base: transparent !important;
+  --ion-background-color: rgba(200, 255, 203, 0.62)!important;
+
+}

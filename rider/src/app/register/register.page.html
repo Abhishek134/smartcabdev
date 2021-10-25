@@ -1,0 +1,235 @@
+<ion-content class="home-background" fullscreen>
+
+    <div class="bgreg" style=" filter: blur(0.2px);">
+        <div class="ion-text-center" style="padding: 40px;">
+        </div>
+    </div>
+
+    <div>
+
+        <form #registerForm="ngForm">
+            <ion-list lines="none">
+                <div class="ion-text-center"><h1 style="color: whitesmoke!important;">Passenger</h1></div>
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">Full Name <span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                    <ion-input
+                            type="text"
+                            [(ngModel)]="name"
+                            style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                            required
+                            name="fullname"
+                            ngModel
+                            #ufulname="ngModel"
+                            placeholder="Enter Full Name"
+                            minlength="6">
+                    </ion-input>
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="ufulname.touched && !ufulname.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="ufulname.errors.required">Please Enter FullName</p>
+                            <p *ngIf="ufulname.errors.minlength">FullName should not be less than 6 characters long</p>
+                        </ion-text>
+                    </div>
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">{{'EMAIL_ADDRESS'| translate}} <span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                    <ion-input
+                            type="email"
+                            [(ngModel)]="email"
+                            style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                            name="email"
+                            ngModel
+                            #uemail="ngModel"
+                            required
+                            placeholder="Enter Email"
+                    ></ion-input>
+
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="uemail.touched && !uemail.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="uemail.errors.required">Enter correct email</p>
+                        </ion-text>
+                    </div>
+                </ion-item>
+
+
+
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">{{'PASSWORD'| translate}} (MIN 6 CHAR) <span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                    </ion-label>
+                    <ion-input
+                            type="password"
+                            [(ngModel)]="password"
+                            style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                            name="password"
+                            ngModel
+                            #upassword="ngModel"
+                            required
+                            placeholder="Enter Password"
+                    ></ion-input>
+
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="upassword.touched && !upassword.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="upassword.errors.required">Enter valid Password</p>
+                        </ion-text>
+                    </div>
+
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">Repeat Password <span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                    <ion-input
+                            type="password"
+                            [(ngModel)]=repassword
+                            name="repassword"
+                            style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                            ngModel
+                            #urepassword="ngModel"
+                            required
+                            placeholder="Repeat Password"
+                    ></ion-input>
+
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="urepassword.touched && !urepassword.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="urepassword.errors.required">Repeat Correct Password</p>
+                        </ion-text>
+                    </div>
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">{{'PHONE_NUMBER'| translate}} <span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                    <ion-input
+                            type="tel"
+                            [(ngModel)]="phoneNumber"
+                            name="phone"
+                            style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                            ngModel
+                            #uphone="ngModel"
+                            required
+                            placeholder="Enter Phone Number"
+                            minlength="10"
+                    ></ion-input>
+
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="uphone.touched && !uphone.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="uphone.errors.required">Enter Phone Number</p>
+                        </ion-text>
+                    </div>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">District<span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                    <ion-input
+                            type="text"
+                            [(ngModel)]="district"
+                            style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                            required
+                            name="district"
+                            ngModel
+                            #udistrict="ngModel"
+                            placeholder="Enter District">
+                    </ion-input>
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="udistrict.touched && !udistrict.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="udistrict.errors.required">Please Enter District</p>
+                        </ion-text>
+                    </div>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">Country<span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                    <ion-input
+                            type="text"
+                            [(ngModel)]="country"
+                            style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                            required
+                            name="country"
+                            ngModel
+                            #ucountry="ngModel"
+                            placeholder="Enter Country">
+                    </ion-input>
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="ucountry.touched && !ucountry.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="ucountry.errors.required">Please Enter Country</p>
+                        </ion-text>
+                    </div>
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-label position="stacked" style="color: white">I Accepts Terms & Conditions <span
+                            style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span></ion-label>
+                    <div style="color: white!important;">
+                        <span>
+                              <ion-checkbox
+                                      slot="start"
+                                      [(ngModel)]="isAccepted"
+                                      style="color: white!important;"
+                                      name="terms"
+                                      ngModel
+                                      #uaccept="ngModel"
+                                      color="primary"
+                                      checked="true"
+                              ></ion-checkbox>
+                        </span>
+
+                    </div>
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="uaccept.touched && !uaccept.valid">
+                        <ion-text color="primary">
+                            <p *ngIf="uaccept.errors.required">Please Read and accept Terms</p>
+                        </ion-text>
+                    </div>
+
+                </ion-item>
+
+
+                <div padding>
+
+                    <!--<ion-button expand="block" (click)="signup()" color="newcolor"-->
+                    <!--style="border-radius: 7px!important; box-shadow: 0 8px 6px -6px black; color: white">-->
+                    <!--{{'REGISTER' | translate}}-->
+                    <!--</ion-button>-->
+
+                    <ion-button
+                            expand="block"
+                            color="newcolor"
+                            style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;"
+                            (click)="signup()"
+                            [disabled]="!registerForm.valid && !isAccepted"
+                    ><p style="color: #ffffff!important;">{{'REGISTER' | translate}}</p>
+                    </ion-button>
+
+
+                    <ion-button fill="clear" expand="block" routerLink="/login" style="color: white">
+                        {{'LOGIN' | translate}}
+                    </ion-button>
+                </div>
+
+                <ion-button fill="clear" expand="block" (click)="openModal()"
+                            style="color: white">
+                    Terms & Conditions
+                </ion-button>
+            </ion-list>
+        </form>
+    </div>
+
+
+</ion-content>
+

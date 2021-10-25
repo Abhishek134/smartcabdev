@@ -1,0 +1,172 @@
+<ion-app>
+    <ion-split-pane>
+        <ion-menu type="overlay">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title>SMART CABS</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+
+                <ion-list lines="none">
+                    <!--<ion-menu-toggle menu="first" auto-hide="false">-->
+
+                    <!--<ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngFor="let p of appPages">-->
+                    <!--<ion-icon routerLinkActive="active-link" slot="start" [name]="p.icon"></ion-icon>-->
+                    <!--<ion-label routerLinkActive="active-link">{{p.title}}</ion-label>-->
+                    <!--</ion-item>-->
+                    <!--</ion-menu-toggle>-->
+
+                    <ion-item [routerDirection]="'root'" [routerLink]="['/home']">
+                        <ion-icon slot="start" name="home" color="warning"></ion-icon>
+                        <button mat-menu-item style="color: white">HOME</button>
+                    </ion-item>
+
+                    <ion-item [routerDirection]="'root'" [routerLink]="['/drivers']">
+                        <ion-icon slot="start" name="car" color="warning"></ion-icon>
+                        <button mat-menu-item style="color: white">ALL DRIVERS</button>
+                    </ion-item>
+
+                    <ion-item [routerDirection]="'root'" [routerLink]="['/bikes']">
+                        <ion-icon slot="start" name="car" color="warning"></ion-icon>
+                        <button mat-menu-item style="color: white">SMART GO BIKES</button>
+                    </ion-item>
+
+                    <ion-item [routerDirection]="'root'" [routerLink]="['/mini']">
+                        <ion-icon slot="start" name="car" color="warning"></ion-icon>
+                        <button mat-menu-item style="color: white">SMART GO MINI</button>
+                    </ion-item>
+
+                    <ion-item [routerDirection]="'root'" [routerLink]="['/xl']">
+                        <ion-icon slot="start" name="car" color="warning"></ion-icon>
+                        <button mat-menu-item style="color: white">SMART GO XL</button>
+                    </ion-item>
+
+
+                    <ion-item [routerDirection]="'root'">
+                        <ion-icon routerLinkActive="active-link" slot="start" name="compass" color="warning"></ion-icon>
+                        <button mat-menu-item [matMenuTriggerFor]="regions" style="color: #efefef">REGIONS</button>
+                    </ion-item>
+
+                    <mat-menu #regions="matMenu">
+                        <button mat-menu-item [routerLink]="['/']"> CENTRAL</button>
+                        <button mat-menu-item [routerLink]="['/']">WESTERN</button>
+                        <button mat-menu-item [routerLink]="['/']">EASTERN</button>
+                        <button mat-menu-item [routerLink]="['/']">NORTHERN</button>
+                    </mat-menu>
+
+
+                    <ion-item [routerDirection]="'root'">
+                        <ion-icon routerLinkActive="active-link" slot="start" name="compass" color="warning"></ion-icon>
+                        <button mat-menu-item [matMenuTriggerFor]="districts" style="color: #efefef">DISTRICTS</button>
+                    </ion-item>
+                    <mat-menu #districts="matMenu">
+                        <button mat-menu-item [routerLink]="['/']"> KAMPALA</button>
+                        <button mat-menu-item [routerLink]="['/mbarara']">MBARARA</button>
+                        <button mat-menu-item [routerLink]="['/']">MUKONO</button>
+                        <button mat-menu-item [routerLink]="['/']">ENTEBBE</button>
+                        <button mat-menu-item [routerLink]="['/']">JINJA</button>
+                        <button mat-menu-item [routerLink]="['/']">MASAKA</button>
+                        <button mat-menu-item [routerLink]="['/']">FORT PORTAL</button>
+                        <button mat-menu-item [routerLink]="['/']">KABALE</button>
+                        <button mat-menu-item [routerLink]="['/']">ISINGIRO</button>
+                        <button mat-menu-item [routerLink]="['/']">MBALE</button>
+                        <button mat-menu-item [routerLink]="['/']">LIRA</button>
+                        <button mat-menu-item [routerLink]="['/']">GULU</button>
+                        <button mat-menu-item [routerLink]="['/']">ARUA</button>
+                    </mat-menu>
+
+
+                    <ion-item [routerDirection]="'root'">
+                        <ion-icon routerLinkActive="active-link" slot="start" name="contacts"
+                                  color="warning"></ion-icon>
+                        <button mat-menu-item [matMenuTriggerFor]="passengers" style="color: #efefef">PASSENGERS
+                        </button>
+                    </ion-item>
+                    <mat-menu #passengers="matMenu">
+                        <button mat-menu-item [routerLink]="['/passengers']"> ALL PASSENGERS</button>
+                    </mat-menu>
+
+                    <ion-item [routerDirection]="'root'">
+                        <ion-icon routerLinkActive="active-link" slot="start" name="compass" color="warning"></ion-icon>
+                        <button mat-menu-item [matMenuTriggerFor]="trips" style="color: #efefef">TRIPS</button>
+                    </ion-item>
+                    <mat-menu #trips="matMenu">
+                        <button mat-menu-item [routerLink]="['/trips']"> ALL TRIPS</button>
+                        <button mat-menu-item [routerLink]="['/cancelledtrips']"> CANCELLED TRIPS</button>
+                        <button mat-menu-item [routerLink]="['/completedtrips']"> COMPLETED TRIPS</button>
+                    </mat-menu>
+
+                    <ion-item [routerDirection]="'root'">
+                        <ion-icon routerLinkActive="active-link" slot="start" name="card" color="warning"></ion-icon>
+                        <button mat-menu-item [matMenuTriggerFor]="transactions" style="color: #efefef">TRANSACTIONS
+                        </button>
+                    </ion-item>
+                    <mat-menu #transactions="matMenu">
+                        <button mat-menu-item [routerLink]="['/customer-deposit']">CUSTOMER DEPOSITS</button>
+                        <button mat-menu-item [routerLink]="['/driver-deposit']">DRIVER DEPOSITS</button>
+                        <button mat-menu-item [routerLink]="['/']">DRIVER PAYMENTS</button>
+                        <button mat-menu-item [routerLink]="['/withdraws']">WITHDRAWS</button>
+                    </mat-menu>
+
+                    <ion-item [routerDirection]="'root'" [routerLink]="['/notifications']">
+                        <ion-icon slot="start" name="notifications" color="warning"></ion-icon>
+                        <button mat-menu-item style="color: white">NOTIFICATIONS</button>
+                    </ion-item>
+
+                    <ion-item [routerDirection]="'root'">
+                        <ion-icon routerLinkActive="active-link" slot="start" name="cash" color="warning"></ion-icon>
+                        <button mat-menu-item [matMenuTriggerFor]="coupons" style="color: #efefef">PROMOTIONS
+                        </button>
+                    </ion-item>
+                    <mat-menu #coupons="matMenu">
+                        <button mat-menu-item [routerLink]="['/promos']">COUPONS</button>
+                    </mat-menu>
+
+                    <ion-item [routerDirection]="'root'" [routerLink]="['/cars']">
+                        <ion-icon slot="start" name="car" color="warning"></ion-icon>
+                        <button mat-menu-item style="color: white">SETTINGS</button>
+                    </ion-item>
+
+
+                </ion-list>
+
+                <!--<div *ngFor="let p of appPages">-->
+
+                <!--<ion-menu-toggle *ngIf="p">-->
+                <!--<ion-item [routerLink]="[p.url]" routerDirection="root" routerLinkActive="active">-->
+                <!--<ion-icon [name]="p.icon" slot="start"></ion-icon>-->
+                <!--<ion-label>-->
+                <!--{{ p.title }}-->
+                <!--</ion-label>-->
+                <!--</ion-item>-->
+                <!--</ion-menu-toggle>-->
+
+                <!--<ion-item *ngIf="p.children?.length > 0" (click)="p.open = !p.open" [class.active-parent]="p.open"-->
+                <!--detail="false">-->
+                <!--<ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon>-->
+                <!--<ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>-->
+                <!--<ion-label>{{ p.title}}</ion-label>-->
+                <!--</ion-item>-->
+
+
+                <!--<ion-list *ngIf="p.open">-->
+                <!--<ion-menu-toggle>-->
+                <!--<ion-item *ngFor="let sub of p.children" [routerLink]="[sub.url]" routerDirection="root" routerLinkActive="active">-->
+                <!--<ion-icon [name]="sub.icon" slot="start"></ion-icon>-->
+                <!--<ion-label>-->
+                <!--{{ sub.title }}-->
+                <!--</ion-label>-->
+                <!--</ion-item>-->
+                <!--</ion-menu-toggle>-->
+                <!--</ion-list>-->
+                <!--</div>-->
+
+
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet main></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>
+
+

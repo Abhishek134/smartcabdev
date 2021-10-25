@@ -1,0 +1,116 @@
+/* Transparent standard */
+ion-toolbar.first {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+
+.show-title{
+
+    // animation: fadein 0.4s;
+    // -moz-animation: fadein 0.4s; /* Firefox */
+    // -webkit-animation: fadein 0.4s; /* Safari and Chrome */
+    // -o-animation: fadein 0.4s; /* Opera */
+    // --color: #fff !important;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+     opacity: 1;
+
+}
+/* Show background if class is active */
+.show-background {
+    border-style: none;
+    animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s; /* Firefox */
+    -webkit-animation: fadein 0.9s; /* Safari and Chrome */
+    -o-animation: fadein 0.5s; /* Opera */
+    
+    background: #009f34;
+}
+.hide-title {
+    border-style: none;
+    animation: fadeout 0.5s;
+    -moz-animation: fadein 0.5s; /* Firefox */
+    -webkit-animation: fadein 0.5s; /* Safari and Chrome */
+    -o-animation: fadein 0.5s; /* Opera */
+
+    background: var(--ion-color-danger);
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
+.top-grey-box{
+    width: 100%;
+    height: 250px;
+    background-color: #aa1515;
+}
+
+.img_conn{
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+
+
+.card-background-page {
+    .ion-card {
+           position: relative;
+           text-align: center;
+       }      
+   
+       ion-avatar{
+         float: left;
+         text-align: center;
+         vertical-align: top;
+         width: 100%;
+         height: 100%;
+         line-height: 72px;
+         background-size: 72px 72px;     
+       }
+   
+       .card-desc-cvr{
+          float: left;
+         }
+   
+         .card-subtitle{
+           color:#9c9c9c;
+           margin: 0px;
+           font-size: 12px;
+         }
+   
+         .card-title{
+           color:#838383;
+           font-size:13px;
+           font-weight:400
+         }
+   }
+

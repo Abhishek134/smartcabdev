@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title><h4 style="color: black!important;">{{'RESET PASSWORD' | translate}}</h4></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+    <div class="bglogin" style=" filter: blur(0.2px);">
+        <div class="ion-text-center" style="padding-top: 70px;">
+            <!--<h1 id="p1" style="font-family: 'brush_script'; font-size: xx-large; color: #feffe5">-->
+                <!--{{appName}}-->
+            <!--</h1>-->
+            <!--<small style="font-size: large;  color: #ffffff;" class="travel_header1">BABU EASY GO</small>-->
+        </div>
+
+    </div>
+
+
+    <div class="ion-padding">
+        <ion-list lines="none">
+            <ion-item>
+                <ion-label position="stacked" style="color: whitesmoke!important;">{{'EMAIL_ADDRESS' | translate }}</ion-label>
+                <ion-input type="text" [(ngModel)]="email"></ion-input>
+            </ion-item>
+        </ion-list>
+        <div class="ion-padding">
+            <ion-button expand="block" (click)="reset()" color="newcolor"
+                        style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black; color: white!important;">{{'RESET_PASSWORD' | translate }}</ion-button>
+        </div>
+    </div>
+</ion-content>

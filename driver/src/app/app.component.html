@@ -1,0 +1,64 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay">
+
+      <ion-content style="background-color: rgb(7,31,180);">
+
+        <div class="bgx" style=" filter: blur(0.2px);">
+          <div class="ion-text-center" style="padding-top: 40px;">
+          </div>
+        </div>
+
+        <br/>
+        <ion-list lines="none">
+          <ion-menu-toggle *ngIf="driver != null">
+            <ion-item routerLink="/profile" style="color: black">
+              <ion-avatar slot="start">
+                <img src="{{ (driver)?.photo2URL}}" />
+              </ion-avatar>
+              <ion-label>
+                <ion-text>
+                  <h3>{{user.displayName}}</h3>
+                </ion-text>
+                <ion-text>
+                  <p><small>{{user.email}}</small></p>
+                  <small>ID: {{driver.serial}}</small>
+                </ion-text>
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+          <ion-menu-toggle menu="first"  auto-hide="false" *ngFor="let p of appPages">
+            <ion-menu-toggle>
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" (click)="playAudio5()">
+                <ion-icon slot="start" [name]="p.icon" style="color: rgb(7,31,180); -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777; border-radius: 50%!important;"></ion-icon>
+                <ion-label style="color: #000000!important;">
+                  <b>{{p.title | translate}}</b>
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+          </ion-menu-toggle>
+
+            <ion-item [routerDirection]="'root'" (click)="logout()" style="cursor: hand;">
+
+                <ion-icon slot="start" name="log-in" style="color: rgb(7,31,180); -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777; border-radius: 50%!important;"></ion-icon>
+                <ion-label style="color: #000000!important;"><b>Logout</b>
+                </ion-label>
+
+            </ion-item>
+
+        </ion-list>
+
+        <div class="ion-text-center">
+          <small style="color: rgba(0,0,0,0.85)">Version 0.0.16</small>
+        </div>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

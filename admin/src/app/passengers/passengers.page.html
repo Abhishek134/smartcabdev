@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Passengers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <table datatable class="row-border hover" class="mat-elevation-z8">
+    <thead>
+      <th>Joined On</th>
+      <th>Info</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rider of passengers">
+        <td>
+          <p>{{rider.createdAt | date: 'MMM dd, yyyy hh:mm a'}}</p>
+
+        </td>
+        <td>
+          <p>{{rider.name}}</p>
+          <p>{{rider.email}} | <a target="_blank" href="tel:{{rider.phoneNumber}}"
+              *ngIf="rider.phoneNumber">{{rider.phoneNumber}}</a></p>
+        </td>
+        <td>
+          <ion-button fill="clear" size="small" routerLink="/passengerinfo/{{rider.key}}">view</ion-button>
+          <ion-button fill="clear" color="danger" size="small" (click)="delete(rider.key)">Delete</ion-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <!-- <ion-list>
+    <ion-item *ngFor="let rider of passengers">
+      <ion-avatar slot="start">
+        <img [src]="rider.photoURL">
+      </ion-avatar>
+      <ion-label>
+        <ion-text>
+          <h3>{{rider.name}}</h3>
+        </ion-text>
+        <ion-text>
+          <p>{{rider.email}} / <a target="_blank" href="tel:{{rider.phoneNumber}}"
+              *ngIf="rider.phoneNumber">{{rider.phoneNumber}}</a></p>
+        </ion-text>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" size="small" routerLink="/passengerinfo/{{rider.key}}">View</ion-button>
+        <ion-button fill="clear" color="danger" size="small" (click)="delete(rider.key)">Delete</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list> -->
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Transport Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+
+  <div style="width:200px">
+    <p>Currency Symbol</p>
+    <ion-input [(ngModel)]="currency"></ion-input>
+    <ion-button slot="end" (click)="updateCurrency()" size="small">Update</ion-button>
+  </div>
+
+  <div style="float: right;padding: 12px;">
+    <ion-button size="small" routerLink="/addcar">Add New Category</ion-button>
+  </div>
+  <table>
+    <thead>
+      <th>Category Name</th>
+      <th>Icons</th>
+      <th>Fare</th>
+      <th>More</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars;let i = index">
+        <td>
+          <p>{{cars[i].name}}</p>
+          <p>Seats: {{(cars[i])?.seats}}</p>
+        </td>
+        <td>
+          <p>Icon: {{cars[i].icon}}</p>
+          <p>Map Icon: {{cars[i].map_icon}}</p>
+        </td>
+        <td>
+
+          <p>BaseFare Below 1KM: {{ (cars[i])?.base_low }}</p>
+          <p>BaseFare: {{ (cars[i])?.base_fare }}</p>
+          <p>BaseKM: {{ (cars[i])?.base_km }}</p>
+          <p>After BaseFare: {{ (cars[i])?.per_km }}</p>
+          <p>Per Minute: {{ (cars[i])?.per_minute }}</p>
+        </td>
+        <td>
+          <ion-button fill="clear" size="small" routerLink="/editcar/{{cars[i].key}}">Edit</ion-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</ion-content>

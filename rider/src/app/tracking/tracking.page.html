@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-title>{{'ON_THE_WAY' | translate}}</ion-title> -->
+        <ion-title><h1 style="font-family: 'brush_script';  color: rgb(158,159,160); text-align: center;"
+                       class=" travel_header1">Driver is on the way...</h1></ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="map" style="height:100%"></div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <div style="text-align:right; color: #222; margin-top: 5px!important;">
+            <br/>
+            <div class="ion-text-center">
+                <span style="background:rgba(255,255,0,0.67); border-radius: 5px!important; text-align: center!important;"
+                      padding>{{ 'SHARE OTP CODE WITH DRIVER' | translate}}</span>
+                <br/><span style="color: red;"><h2><b>{{ (trip)?.otp }} </b></h2></span>&nbsp;&nbsp;
+            </div>
+
+        </div>
+        <ion-item>
+
+            <ion-avatar slot="start">
+                <img src="{{ (driver)?.photo2URL }}"/>
+            </ion-avatar>
+            <ion-label>
+                <!--<ion-text>-->
+                <!--<h2 style="color: white!important;">{{ (driver)?.name }} &nbsp; {{(driver)?.rating}}-->
+                <!--<ion-icon name="md-star" color="yellow"></ion-icon>-->
+                <!--</h2>-->
+                <!--</ion-text>-->
+
+            </ion-label>
+
+            <ion-button style="color: white!important;" slot="end" (click)="openModal()">
+                <ion-icon ios="ios-chatbubbles" md="md-chatbubbles" padding="true"></ion-icon>
+                CHAT
+            </ion-button>
+
+            <ion-button slot="end" href="tel: {{ (driver)?.phoneNumber }} ">
+                <ion-icon name="call"></ion-icon>&nbsp;{{'CALL ' | translate}}
+            </ion-button>
+
+        </ion-item>
+
+        <ion-item>
+
+            <ion-avatar item-start>
+                <img src="{{ (driver)?.vehicleURL }}">
+            </ion-avatar>
+            <p style="color: white!important;" padding="true">{{ (driver)?.name }} &nbsp; {{(driver)?.rating}}
+                <ion-icon name="md-star" color="yellow"></ion-icon>
+            </p>
+            <small style="color: white!important;">{{ (driver)?.plate }} &middot; {{ (driver)?.brand }}</small>
+
+        </ion-item>
+        <!-- <ion-button color="dark" expand="block" (click)="showRateCard()">{{'SHOW_RATE_CARD' | translate}}
+        </ion-button> -->
+        <div padding>
+
+            <div style="text-align: left">
+                <ion-buttons>
+                    <ion-button slot="start" color="default" *ngIf="tripStatus == 'waiting'"
+                                (click)="cancelTrip()"><span style="color: red; float: right">Cancel Trip</span>
+                </ion-button>
+
+                    <ion-button slot="end" fill="outline" href="tel:{{sos}}"
+                                ><span style="color: #ffbb0f; float: right">HELPLINE</span>
+                    </ion-button>
+                </ion-buttons>
+
+            </div>
+
+            <ion-button color="dark" expand="block" (click)="showRateCard()"
+                        color="newcolor"
+                        style="border-radius: 7px!important; box-shadow: 0 8px 6px -6px black;">SHOW CARD & RATING
+            </ion-button>
+        </div>
+    </ion-toolbar>
+</ion-footer>

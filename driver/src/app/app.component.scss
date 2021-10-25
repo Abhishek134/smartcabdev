@@ -1,0 +1,42 @@
+
+
+ion-toolbar {
+  //--background: transparent;
+  //--ion-color-base: transparent !important;
+  --ion-background-color: #241e76;
+
+}
+
+ion-content {
+
+  //--ion-background-color: rgb(247, 176, 50);
+  --ion-background-color: rgb(227, 227, 227);;
+
+}
+
+.bgx {
+  background-image: url('../assets/images/smartside1.jpg');
+  background-repeat: no-repeat;
+  height: 200px;
+  background-size: cover;
+  filter: blur(3px);
+  background-position: center center;
+  position: relative;
+  padding-top: auto;
+  margin: auto;
+
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+
+}
+
+ion-item a:hover{
+  color: white!important;
+  background-color: rgba(94,196,254,0.69)!important;
+}
+
+ion-item:hover{
+  cursor: hand;
+}
+
+
+

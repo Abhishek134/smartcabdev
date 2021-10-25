@@ -1,0 +1,29 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
+import {IonicModule} from '@ionic/angular';
+import {CashlessPage} from './cashless.page';
+import { MomentModule } from 'angular2-moment';
+import { TranslateModule } from '@ngx-translate/core';
+
+const routes: Routes = [
+    {
+        path: '',
+        component: CashlessPage
+    }
+];
+
+@NgModule({
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        MomentModule,
+        TranslateModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [CashlessPage]
+})
+export class CashlessPageModule {
+}

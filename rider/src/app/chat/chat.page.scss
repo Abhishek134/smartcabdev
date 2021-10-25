@@ -1,0 +1,80 @@
+
+page-chat {
+  .innerMessage {
+    background-color: #74ff7c;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+  }
+}
+
+.message {
+
+}
+
+.elem button {
+  border-radius: 0;
+  margin: 0;
+}
+
+//inspector-stylesheet:6
+div#footer div.elem:first-child {
+  flex-grow: 1;
+}
+
+//inspector-stylesheet:1
+div#footer {
+  display: flex;;
+  flex-direction: row;
+}
+
+.chat {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  border-radius: 5px;
+  margin: 0.2em 0;
+  padding: 0.5em;
+  max-width: 50%;
+
+}
+
+.me {
+  align-self: flex-start;
+  //background-color: #3c4ba1;
+  color: white;
+  background: #0f0c29; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+
+}
+
+.you {
+  align-self: flex-end;
+  //background-color: green;
+  color: white;
+
+  background: #093028; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #237A57, #093028); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+
+}
+
+ion-content {
+  --ion-background-color: rgb(245, 245, 255);
+}
+
+ion-toolbar {
+  --ion-background-color: #0b193e!important;
+}

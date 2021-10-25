@@ -1,0 +1,138 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{'RIDE_INFORMATION' | translate}}</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="#"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button color="light" (click)="cancelTrip()">{{ 'CANCEL_TRIP' | translate}}</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content >
+            <ion-list lines="none">
+                <ion-item *ngIf="passenger.phoneNumber">
+                    <ion-label>
+                        <ion-text>
+                            <h2>{{(passenger)?.name }}</h2>
+                        </ion-text>
+                        <ion-text>
+                            <p>{{(passenger)?.phoneNumber }}</p>
+                        </ion-text>
+                    </ion-label>
+
+
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <ion-text>
+                            <h2>{{'FROM' | translate}}</h2>
+                        </ion-text>
+                        <ion-text>
+                            <p *ngIf="trip.origin != undefined">{{ trip.origin.vicinity }}</p>
+                        </ion-text>
+                    </ion-label>
+                    <ion-button slot="end" fill="clear" color="dark"
+                                (click)="getDirection(trip.origin.location.lat,trip.origin.location.lng)">
+                        <ion-icon name="navigate"></ion-icon>&nbsp;MAP
+                    </ion-button>
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <ion-text>
+                            <h2>{{'TO' | translate}}</h2>
+                        </ion-text>
+                        <ion-text>
+                            <p *ngIf="trip.destination != undefined">{{ trip.destination.vicinity }}</p>
+                        </ion-text>
+                    </ion-label>
+                    <ion-button slot="end" fill="clear" color="dark"
+                                (click)="getDirection(trip.destination.location.lat,trip.destination.location.lng)">
+                        <ion-icon name="navigate"></ion-icon>&nbsp;MAP
+                    </ion-button>
+                </ion-item>
+
+                <ion-item>
+                    <ion-button slot="start" (click)="openModal()" expand="block" color="">
+                        <!-- Advanced: explicity set the icon for each platform -->
+                        <ion-icon ios="ios-chatbubbles" md="md-chatbubbles" padding="true"></ion-icon>
+                        CHAT
+                    </ion-button>
+
+
+                    <ion-button slot="end" href="tel:{{passenger.phoneNumber}}">
+                        <ion-icon name="call"></ion-icon>&nbsp; {{'CALL' | translate}}
+                    </ion-button>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <div class="pricing" no-padding="true">
+        <table >
+            <tr>
+                <td>{{ 'FEE' | translate}}</td>
+                <td>{{ trip.currency }} {{ trip.rawfee }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'DISCOUNT' | translate}} <br/> <b>{{trip.promocode}} • {{trip.discount}} %</b></td>
+                <td>{{ trip.currency }} {{ discount }}</td>
+            </tr>
+            <tr>
+                <td>Total Cost</td>
+                <td>{{ trip.currency }} {{trip.fee}}</td>
+            </tr>
+            <tr>
+                <td>{{ 'TAX' | translate }} - {{ trip.tax }} %</td>
+                <td>{{ trip.currency }} {{ tax }}</td>
+            </tr>
+            <tr>
+                <!--<i>{{trip.commission_value}} {{trip.commission_type}}</i>-->
+                <td>Your Payment is <i>{{trip.commission_value}} {{trip.commission_type}}</i></td>
+                <td>{{ trip.currency }} <span style="color: #ff0205;">{{trip.commission}}</span></td>
+            </tr>
+            <tr>
+                <td>{{ 'PAYMENT_MODE' | translate}}</td>
+                <td>{{trip.paymentMethod}}</td>
+            </tr>
+            <tr>
+                <!--<td>Smart Cabs</td>-->
+                <!--<td>-->
+                    <!--&lt;!&ndash;<ion-button slot="end" (click)="sendMessage()" expand="block">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ion-icon name="chatbox"></ion-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;SMS&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ion-button>&ndash;&gt;-->
+
+
+                    <!--&lt;!&ndash;<ion-button slot="end" (click)="openModal()" expand="block" color="">&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash; Advanced: explicity set the icon for each platform &ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ion-icon ios="ios-chatbubbles" md="md-chatbubbles" padding="true"></ion-icon>&ndash;&gt;-->
+                    <!--&lt;!&ndash;CHAT&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ion-button>&ndash;&gt;-->
+
+
+                <!--</td>-->
+            </tr>
+        </table>
+    </div>
+    <h4 style="color: #191349!important; text-align: center!important;" *ngIf="trip.fee"><b>{{ trip.currency }}:
+        {{trip.fee}} /=</b></h4>
+    <h4 style="color: #ff1e00!important; text-align: center!important;" *ngIf="!trip.fee"><b>{{ trip.currency }}
+        0.00/=</b></h4>
+
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar padding="true">
+        <!--<h2 id="counting">0</h2>-->
+        <ion-button expand="block" color="primary" [hidden]="isTripStarted" (click)="pickup()">{{'PICKUP' | translate}}
+        </ion-button>
+        <ion-button expand="block" color="danger" [hidden]="!isTripStarted" (click)="showPayment()">
+            {{'COMPLETE_RIDE' | translate}}
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>
+

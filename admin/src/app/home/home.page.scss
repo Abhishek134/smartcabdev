@@ -1,0 +1,28 @@
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.card{
+  display: flex;
+  box-shadow: 1px 1px 4px #eee;
+  min-height: 150px;
+  justify-content: center;
+  align-items: center;
+  outline: 0;
+  border: 4px;
+  background: #fff;
+}
+
+.card:hover{
+  border: 1px solid #333;
+  cursor: pointer;
+}
+ion-content{
+  --ion-background-color:#fbfbfb;
+}
+
+ion-toolbar{
+  --ion-background-color: #0b3e6f;
+  color: white!important;
+}

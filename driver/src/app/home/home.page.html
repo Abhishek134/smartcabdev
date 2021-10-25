@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" >
+            <ion-menu-button (click)="sideBarOpen()"></ion-menu-button>
+        </ion-buttons>
+        <div class="ion-text-center">
+            <span><h1 class=" travel_header1">SMART CABS</h1></span>
+            <!--<small>ID: {{driver.serial}}</small>-->
+            <!--<p><b>ID: </b></p>-->
+        </div>
+
+    </ion-toolbar>
+
+    <ion-item lines="none"  *ngIf="driver.isApproved" style="--ion-background-color: rgb(7,24,130); color: white!important;">
+        <ion-avatar slot="start">
+            <img src="{{ (driver)?.photo2URL}}">
+        </ion-avatar>
+        <ion-label>
+            <ion-text>
+                <h5>{{ (driver)?.first_name }} - {{ (driver)?.surname }} - <span style="color: rgba(242,242,242,0.93)">{{ (driver)?.rating }}</span>
+                    <ion-icon name="md-star" style="color: #ccaa35"></ion-icon>
+                </h5>
+            </ion-text>
+            <ion-text>
+                <p>{{ (driver)?.brand }} • {{ (driver)?.model }} • {{ (driver)?.plate }} • {{ (driver)?.type }}</p>
+            </ion-text>
+        </ion-label>
+        <ion-toggle [(ngModel)]="isDriverAvailable" [disabled]="!(driver)?.isApproved" (ionChange)="changeAvailability()"
+                    slot="end"></ion-toggle>
+    </ion-item>
+
+
+</ion-header>
+
+<ion-content>
+    <div *ngIf="!driver.isApproved">
+        <div class="bgx" style=" filter: blur(0.2px);">
+            <div class="ion-text-center" style="padding-top: 40px;">
+            </div>
+        </div>
+
+
+        <div class="ion-text-center" style="padding-top: 40px;">
+        <p *ngIf="driver.ninFront" class="ion-padding" style="color: #659f28; text-align: center!important;">
+            <span style="color: #ff1600"><b>CONGRATULATIONS!!!</b></span><br/><br/>
+
+            <span style="text-align: justify!important; color: #ff1600">You have been Rewarded <br/><code style="color: #ff1600"><b>UGX 10,000/= </b></code><br/>for Successful Registration.</span>
+          <br/><br/><br/>
+            <span style="margin-top: 10px!important; color: #ff1600">Your Account is Pending Approval</span>
+        </p>
+        </div>
+
+
+        <!--<p class="ion-padding" *ngIf="!driver.ninFront">Your have more details to fill, Click the Button and Complete all the addition fields.</p>-->
+
+        <!--<ion-button expand="block" routerLink="/profile" routerDirection="root" color="newbtn1" style="border-radius: 7px!important; box-shadow: 0 8px 6px -6px black;" *ngIf="!driver.ninFront">-->
+            <!--COMPLETE APPLICATION-->
+        <!--</ion-button>-->
+
+
+    </div>
+
+    <div id="map" style="height: 100%;width:100%;" *ngIf="driver.isApproved"></div>
+</ion-content>
+
+

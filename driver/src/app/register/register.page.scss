@@ -1,0 +1,58 @@
+
+
+//.bgreg {
+//  background-image: url('../../assets/images/logo.jpg');
+//  background-repeat: no-repeat;
+//  height: 240px;
+//  background-size: cover;
+//  filter: blur(3px);
+//  background-position: center center;
+//  position: relative;
+//  padding-top: auto;
+//  margin: auto;
+//  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+//}
+
+.bgreg {
+  background-image: url('../../assets/images/header2.png');
+  background-repeat: no-repeat;
+  height: 240px;
+  background-size: cover;
+  filter: blur(3px);
+  background-position: center center;
+  position: relative;
+  padding-top: auto;
+  margin: auto;
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+}
+
+
+
+ion-content{
+  // --ion-background-color: #5480b7 !important;
+  --ion-background-color: #171743 !important;
+}
+ion-header{
+  position: absolute;
+}
+
+ion-toolbar{
+  --ion-background-color: transparent;
+  -moz-opacity: 0;
+}
+
+ion-footer{
+  position: relative;
+  --ion-background-color: #E1EAF9;
+  background-color:rgba(0,0,0,0);
+}
+.scroll-content {
+  margin-bottom: 0!important;
+}
+
+.signin-btns{
+  margin-top: 25px;
+  text-align: center;
+  color: #F0F4FA
+}
+

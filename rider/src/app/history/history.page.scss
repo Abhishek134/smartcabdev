@@ -1,0 +1,45 @@
+h3{
+    font-weight: 500
+}
+
+.trip-card{
+    padding: 8px 16px;
+    box-shadow: 1px 1px 5px #eee;
+    border: 1px solid #eee;
+    margin: 16px 4px;
+    border-radius: 8px;
+}
+.trip-card h3{
+    font-size: 14px;   
+}
+.trip-card .pricing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 12px;
+}
+.price{
+    margin:0;
+    font-weight: 500;
+    font-size: 12px;
+    color:#4CAF50
+}
+.datetime{
+    margin:0;
+    color: #777;
+    font-size: 12px;
+}
+
+.tripstatus{
+    text-transform: uppercase;
+    color: #2196f3;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+ion-toolbar {
+    --ion-background-color: rgb(7,31,180);
+    color: #ffffff!important;
+
+}

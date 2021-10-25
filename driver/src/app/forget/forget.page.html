@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-back-button color="dark"></ion-back-button>
+        </ion-buttons>
+        <ion-title><h3 style="color: black!important;">{{'RESET_PASSWORD' | translate}}</h3></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <div class="bglogin" style=" filter: blur(0.2px);">
+        <div class="ion-text-center" style="padding-top: 70px;">
+            <!--<h1 id="p1" style="font-family: 'brush_script'; font-size: xx-large; color: #feffe5">-->
+            <!--{{appName}}-->
+            <!--</h1>-->
+            <!--<small style="font-size: large;  color: #ffffff;" class="travel_header1">BABU EASY GO</small>-->
+        </div>
+
+    </div>
+
+
+    <div class="ion-padding">
+        <form #forgetForm="ngForm">
+        <ion-list lines="none">
+            <ion-item>
+                <ion-label position="stacked" style="color: whitesmoke!important;">{{'EMAIL_ADDRESS' | translate }}
+                </ion-label>
+                <ion-input
+                        type="text"
+                        [(ngModel)]="email"
+                        name="email"
+                        ngModel
+                        #uemail="ngModel"
+                        required
+                        placeholder="Enter Email"
+                ></ion-input>
+
+                <div style="color: white!important; text-align: center!important;"
+                     *ngIf="uemail.touched && !uemail.valid">
+                    <ion-text color="danger">
+                        <p *ngIf="uemail.errors.required">Enter valid email</p>
+                    </ion-text>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div class="ion-padding">
+            <ion-button
+                    expand="block"
+                    (click)="reset()"
+                    color="newcolor"
+                    [disabled]="!forgetForm.valid"
+                        style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black; color: whitesmoke!important;">
+                {{'RESET_PASSWORD' | translate }}
+            </ion-button>
+        </div>
+        </form>
+    </div>
+</ion-content>

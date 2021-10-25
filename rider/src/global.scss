@@ -1,0 +1,208 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+/* ====== PEREZ CODE ===== */
+@import 'assets/scss/animations.scss';
+
+@font-face {
+    font-family: 'brush';    //This is what we are going to call
+    src: url('assets/font/brushscript/BRUSHSCI.ttf');
+}
+
+@font-face {
+    font-family: 'brush_script';    //This is what we are going to call
+    src: url('assets/font/brushscript/brush_script_mt_kursiv.ttf');
+}
+
+
+.login-header{
+    text-align: center;
+    padding-top: 24px;
+}
+.login-header img{
+    height: 80px;
+    width: 80px;
+}
+ion-button{
+    --box-shadow:none;
+}
+
+ion-input, ion-textarea{
+    background: #eee !important;
+    margin-top: 1rem !important;
+    border: 1px solid #ddd !important;
+}
+
+ion-item {
+    --highlight-color-valid: transparent;
+    --highlight-color-invalid: transparent;
+    --highlight-color-focused: transparent;
+  }
+
+.native-input.sc-ion-input-md{
+    padding: 0.5rem !important;
+    color: #555;   
+}
+
+.sidebar-header{
+    background: #222;
+    height: 150px;
+    padding: 2rem;
+    color: #fff;
+}
+
+
+
+ion-toolbar {
+    // --ion-background-color: rgb(247, 201, 103);
+   // --ion-background-color: rgb(204, 247, 244);
+   // #191349
+   --ion-background-color: #ffffff;  /* fallback for old browsers */
+    --ion-color: black!important;
+
+    //--ion-background-color: #191349;
+}
+
+
+#off {
+    color: #1d580a;
+}
+
+.home-background {
+    //--background: none;
+    //background: url(./assets/img/background-blank-empty.jpg) no-repeat center center fixed !important;
+    //background-size: cover !important;
+    --ion-background-color: rgb(247, 201, 103);
+
+}
+.myh {
+    color: white;
+    text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+
+// ====== NEW PEREZ CODES HERE FROM WEKEZA =====
+
+//*************************************//
+//******** Horizontal scroll ***********//
+//*************************************//
+
+.top-horizontal-scroll {
+    margin-left: 10px;
+    white-space: nowrap;
+    height: auto;
+    overflow-X: scroll;
+    overflow-y: auto;
+}
+.horizontal-scroll {
+    margin-left: 10px;
+    white-space: nowrap;
+    height: auto;
+    overflow-X: scroll;
+    overflow-y: auto;
+    vertical-align: top !important; /* here */
+}
+
+//*************************************//
+//******** Modal styles ***********//
+//*************************************//
+
+// from bottom
+// .my-custom-modal-css .modal-wrapper {
+//     height: 20%;
+
+//     top: 80%;
+//     position: absolute;
+//     display: block;
+//  }
+
+
+//******** small ***********//
+.from-middle-modal .modal-wrapper {
+    height: 450px;
+    width: 380px;
+    // width: 300px;
+    // top: 350px;
+    // bottom:0px;
+    position: absolute;
+    border-radius: 8px  !important;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+}
+//******** full ***********//
+
+//********  top ***********//
+.from-top-modal .modal-wrapper {
+    height: 20%;
+    bottom: 80%;
+    position: absolute;
+    display: block;
+}
+
+
+//******** bottom  ***********//
+.from-bottom-modal .modal-wrapper {
+    height: 20%;
+
+    top: 80%;
+    position: absolute;
+    display: block;
+}
+
+.widhdraw-header {
+    text-align: center;
+    min-height: 200px;
+    //background: rgba(200, 255, 203, 0.62);
+    color: #fff;
+    margin-top: -20px;
+    padding-top: 30px;
+
+
+    background-image: url('./assets/img/dp1.jpg');
+    background-repeat: no-repeat;
+    height: 200px;
+    background-size: cover;
+    //filter: blur(1px);
+    background-position: center center;
+    position: relative;
+}
+
+
+

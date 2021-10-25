@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <!--<ion-button class="root" routerLink="/home" routerDirection="root">Home</ion-button>-->
+
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="#"></ion-back-button>
+      </ion-buttons>
+
+    <div class="ion-text-center">
+      <ion-title  class=" travel_header1"><h1>{{'HISTORY' | translate}}</h1></ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="reset()">
+        <ion-icon name="refresh" id="reset" style="color: whitesmoke;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 4px;background:#ddd;">
+    <ion-row>
+      <ion-col>
+        <ion-datetime max="{{today}}" value="{{today}}" [(ngModel)]="fromDate"></ion-datetime>
+      </ion-col>
+      <ion-col>
+        <ion-datetime max="{{today}}" min={{fromDate}} value="{{today}}" [(ngModel)]="toDate"></ion-datetime>
+      </ion-col>
+      <ion-col>
+        <ion-button size="small" (click)="applyFilter()">{{'FILTER' | translate}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="earn-header">
+    <p>{{'EARNINGS' | translate}}</p>
+    <h2>{{currency}} {{earning}}</h2>
+  </div>
+  <div class="ion-padding">
+    <p *ngIf="trips.length == 0" style="margin-top: 5px; text-align: center">No Trips Found</p>
+
+    <div class="trip-card" *ngFor="let trip of trips">
+      <p class="datetime">{{ trip.createdAt | date:'MMM dd, yyyy hh:mm a'}} • {{trip.createdAt}}</p>
+      <h3><span style="color:#4CAF50">•</span> {{ trip.origin.vicinity }}</h3>
+      <h3><span style="color:#F44336">•</span> {{ trip.destination.vicinity }}</h3>
+      <hr />
+      <div class="pricing">
+        <div>
+          <p class="price">{{trip.currency}} {{trip.commission}}</p>
+        </div>
+        <div>
+          <span class="tripstatus">{{trip.status}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

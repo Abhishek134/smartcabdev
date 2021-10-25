@@ -1,0 +1,128 @@
+<ion-content fullscreen="true">
+
+    <div class="locationinput-holder" padding>
+        <br/>
+        <span></span> <input class="locationinput" (click)="chooseOrigin()" placeholder="Where do you want to pickup?"
+                             type="text"
+                             value="{{origin ? origin.vicinity : '' }}" style=" -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777; box-shadow: 0 10px 6px -6px #777; background-color: rgb(7,31,180); color: #ffffff!important;">
+
+
+        <input class="locationinput" (click)="chooseDestination()" placeholder="Where To?" type="text"
+               value="{{ destination ? destination.vicinity : '' }}" style=" -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777; box-shadow: 0 10px 6px -6px #777; background-color: rgb(7,31,180); color: #ffffff!important;">
+        <div>
+            <ion-buttons slot="end">
+                <ion-menu-button autoHide="true" style="
+               border-radius: 50%!important; margin-top: 10px!important; -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777; box-shadow: 0 10px 6px -6px #777; background-color: rgb(7,31,180);  color: white!important;"
+                                 (click)="playButtonSound()"></ion-menu-button>
+            </ion-buttons>
+        </div>
+
+    </div>
+    <div id="{{ mapId }}" [ngStyle]="{height: '100%'}"></div>
+
+</ion-content>
+
+<ion-footer>
+
+
+    <div style="background-color: white!important; padding: 10px!important; " [hidden]="!destination">
+        <ion-card no-padding="true">
+
+            <!-- ACCORDION STARTS HERE -->
+
+            <div class="card text-center">
+                <p class="distanceText" style="text-align: center!important;"><b>
+                    <span *ngIf="distanceText!=''">Distance: <span style="color: red">{{ distanceText }}</span></span>
+                    <span *ngIf="durationText!=''">&nbsp; Duration: <span
+                            style="color: red">{{durationText}}</span></span></b></p>
+
+
+                <!--<ion-row [hidden]="!destination" padding color="dark" class="row">-->
+
+                    <!--<ion-col *ngFor="let vehicle of vehicles; let i = index" [ngClass]="{'active': vehicle.active}"-->
+                             <!--(click)="chooseVehicle(i)">-->
+                        <!--<img src="{{ vehicle.icon }}"-->
+                             <!--style="margin-left: 30px!important; margin-bottom: 3px!important;">-->
+
+                        <!--<p class="carName" *ngIf="vehicle.name == 'boda'">Smart Bike</p>-->
+                        <!--<p class="carSeats" *ngIf="vehicle.name == 'boda'">{{ vehicle.seats }} seat</p>-->
+
+                        <!--<p class="carName" *ngIf="vehicle.name == 'car'">Smart Mini</p>-->
+                        <!--<p class="carSeats" *ngIf="vehicle.name == 'car'">{{ vehicle.seats }} seats</p>-->
+
+                        <!--<p class="carName" *ngIf="vehicle.name == 'XL'">Smart XL</p>-->
+                        <!--<p class="carSeats" *ngIf="vehicle.name == 'XL'">{{ vehicle.seats }} seats</p>-->
+
+                        <!--<p class="carPrice">-->
+                            <!--<small><b>{{currency }} {{ vehicle.fee_taxed }} - {{currency }} {{ vehicle.fee_taxed + 3000-->
+                                <!--}}</b></small>-->
+                        <!--</p>-->
+                    <!--</ion-col>-->
+
+                <!--</ion-row>-->
+
+                <!-- TEST CODE-->
+                <ion-list>
+                    <ion-item *ngFor="let vehicle of vehicles; let i = index" [ngClass]="{'active': vehicle.active}" (click)="chooseVehicle(i)">
+                        <ion-avatar slot="start">
+                            <img src="{{ vehicle.icon }}" >
+                            <!--style="margin-left: 30px!important; margin-bottom: 3px!important;"-->
+                        </ion-avatar>
+                        <ion-label>
+
+
+                            <small *ngIf="vehicle.name == 'boda'">Smart Bike - <span  *ngIf="vehicle.name == 'boda'"></span>{{ vehicle.seats }} seat</small>
+                            <small *ngIf="vehicle.name == 'car'">Smart Mini - <span  *ngIf="vehicle.name == 'car'"></span>{{ vehicle.seats }} seats</small>
+                            <small *ngIf="vehicle.name == 'XL'">Smart XL - <span  *ngIf="vehicle.name == 'XL'"></span>{{ vehicle.seats }} seats</small>
+                            <br/>
+                            <!--<h3>I'm a big deal</h3>-->
+
+                            <small *ngIf="vehicle.name == 'boda'"><b>EST: [ {{currency }} {{ vehicle.fee_taxed }} ] - {{currency }} {{ vehicle.fee_taxed + 1000 }}</b></small>
+                            <small *ngIf="vehicle.name == 'car'"><b>EST: [ {{currency }} {{ vehicle.fee_taxed }} ] - {{currency }} {{ vehicle.fee_taxed + 2000 }}</b></small>
+                            <small *ngIf="vehicle.name == 'XL'"><b>EST: [ {{currency }} {{ vehicle.fee_taxed }} ] - {{currency }} {{ vehicle.fee_taxed + 2000 }}</b></small>
+                            <!--<p>Listen, I've had a pretty messed up day...</p>-->
+                        </ion-label>
+                    </ion-item>
+
+                </ion-list>
+
+
+            </div>
+
+            <!-- ACCORDION ENDS HERE -->
+
+            <ion-row [hidden]="!destination" no-padding style="margin-top: -10px!important;">
+                <ion-col>
+                    <ion-button fill="clear" color="dark" expand="full" (click)="choosePaymentMethod1()">
+                        <ion-icon slot="start" name="card"></ion-icon>
+                        {{ getPaymentMethod() }}
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button fill="clear" color="dark" expand="full" (click)="showPromoPopup()">
+                        <ion-icon slot="start" name="create"></ion-icon>
+                        {{'PROMO' | translate}}
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </div>
+
+    <ion-toolbar style="background-color: white">
+        <div padding style="height: auto!important;">
+            <ion-button expand="block" [hidden]="destination" (click)="chooseDestination()" color="newcolor"
+                        style="border-radius: 7px!important; background-color: rgb(7,31,180); box-shadow: 0 8px 6px -6px black; color: white">
+                {{'ORDER NOW' | translate}}
+            </ion-button>
+            <ion-button expand="block" [hidden]="!destination" (click)="book()" color="newcolor"
+                        style="border-radius: 7px!important; background-color: rgb(7,31,180); box-shadow: 0 8px 6px -6px black; color: white!important;">
+                {{ locateDriver == false ? 'ORDER NOW' : 'Locating Drivers'}}
+                <ion-spinner name="dots" color="light" [hidden]="!locateDriver"></ion-spinner>
+            </ion-button>
+        </div>
+    </ion-toolbar>
+</ion-footer>
+

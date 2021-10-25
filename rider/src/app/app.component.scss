@@ -1,0 +1,60 @@
+.header-md:after {
+  background-image: none !important;
+}
+
+
+ion-toolbar {
+  //--background: transparent;
+  //--ion-color-base: transparent !important;
+  //--ion-background-color: #c1d5c4;
+
+  background: #3CA55C; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #B5AC49, #3CA55C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  --ion-color-base: transparent !important;
+
+}
+
+// Side bar
+ion-content {
+  //--ion-background-color: rgba(239, 239, 239, 0.41);
+  background-color: rgba(94,196,254,0.69)!important;
+  opacity: 1;
+  -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  //--ion-background-color: #3CA55C !important; /* fallback for old browsers */
+  //--ion-background-color: -webkit-linear-gradient(to right, #B5AC49, #3CA55C) !important; /* Chrome 10-25, Safari 5.1-6 */
+  //--ion-background-color: linear-gradient(to right, #B5AC49, #3CA55C) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  //--ion-color-base: transparent !important;
+  //opacity: 90%;
+
+}
+
+.bgx {
+  background-image: url('../assets/images/smartside1.jpg');
+  background-repeat: no-repeat;
+  height: 200px;
+  background-size: cover;
+  filter: blur(3px);
+  background-position: center center;
+  position: relative;
+  padding-top: auto;
+  margin: auto;
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+
+  // mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/sun.svg);
+  //mask-image: url(../assets/images/blob.svg);
+  //mask-size: 50vmin;
+  //mask-repeat: no-repeat;
+  //mask-position: center;
+}
+
+ion-item a:hover{
+  color: white!important;
+  background-color: rgba(94,196,254,0.69)!important;
+}
+
+

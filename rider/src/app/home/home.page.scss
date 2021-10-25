@@ -1,0 +1,132 @@
+.locationinput-holder{
+  padding: 0.2rem 1rem;
+  position: absolute;
+  background: transparent;
+  z-index: 999999;
+  top:0;
+  width:100%;
+}
+.locationinput{
+  background: #fff;
+  border:1px solid #ccc;
+  outline:0;
+  width: 100%;
+  padding: 0.5rem;
+  color: #333;
+  margin: 2px 0px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.distanceText{
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+.align-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+}
+
+.align-bottom p{
+  font-size: 14px
+}
+
+ion-col{
+  text-align: center
+}
+ion-col img{
+  width: 40px;
+  padding: 5px;
+  border-radius: 100%;
+}
+ion-col p { margin: 0}
+ion-row{
+  background: #fff;
+}
+.list-md {
+  margin: -1px 0 0px;
+}
+.label-md{
+  margin: 13px -50px 13px 0;
+}
+.text-input-md{
+  font-size: 14px;
+  margin: 8px 5px;
+}
+#map {
+  width: 100%;
+}
+
+.active img{
+  background: #ffce00;
+}
+
+.active img:hover{
+  background: #ff700d;
+}
+
+img:hover{
+  background: #ff700d;
+}
+
+.carName{
+  font-weight: 600;
+}
+.carSeats{
+  color: #777;
+  font-size: 14px;
+}
+.carPrice{
+  color: #E91E63;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+ion-toolbar {
+  --ion-toolbar-background-color: transparent;
+  --ion-toolbar-text-color: white;
+}
+
+.myphoto {
+  img {
+    height: 50%!important;
+    width: 50% !important;
+    align-items: center;
+  }
+}
+
+.item-text-wrap img {
+  text-align: center;
+}
+
+// ==== PEREZ EFFECT ===
+//ion-card {
+//  margin: 0;
+//}
+.perez-box{
+  min-height: 350px;
+
+  position: absolute;
+  left: 0;
+  bottom: -0px;
+  //top: 60%;
+  right: 0;
+  transform: translateY(-30px);
+}
+
+.newcolor {
+  color: white!important;
+}
+
+
+ion-toolbar {
+  // --ion-background-color: rgb(247, 201, 103);
+  // --ion-background-color: rgb(204, 247, 244);
+  // #191349
+  --ion-background-color: #ffff;  /* fallback for old browsers */
+}
+
+

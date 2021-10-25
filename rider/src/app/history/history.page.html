@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title><h1 style="color: #e3e3e3!important; text-align: center!important;">{{'HISTORY' | translate}}</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p *ngIf="trips.length == 0" style="margin-top: 5px; text-align: center!important; color: red!important;">No Trips Found</p>
+
+  <div class="trip-card" *ngFor="let trip of trips" (click)="viewTrip(trip)">
+    <p class="datetime">{{ trip.createdAt | date:'MMM dd, yyyy hh:mm a'}}</p>
+    <h3><span style="color:#4CAF50">•</span> {{ trip.origin.vicinity }}</h3>
+    <h3><span style="color:#F44336">•</span> {{ trip.destination.vicinity }}</h3>
+    <hr />
+    <div class="pricing">
+      <div>
+        <p class="price">{{trip.currency}} {{trip.fee}} ({{ trip.paymentMethod }})</p>
+      </div>
+      <div>
+        <span class="tripstatus">{{trip.status}}</span>
+      </div>
+    </div>
+  </div>
+</ion-content>

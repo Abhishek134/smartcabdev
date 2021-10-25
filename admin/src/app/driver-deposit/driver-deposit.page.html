@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Driver Deposits - {{wallet.length}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <table datatable class="row-border hover" class="mat-elevation-z8">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>USER ID</th>
+      <th>NAME</th>
+      <th>AMOUNT DEPOSITED (UGX)</th>
+      <th>ACCOUNT BALANCE (UGX)</th>
+      <th>PAYMENT DETAILS</th>
+      <th>ACTION</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of wallet; let i=index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <!--<p>{{driver.createdAt | date:'MMM dd yyyy hh:mm a' }}</p>-->
+        <p>{{ item.userId }}</p>
+      </td>
+      <td>
+        <p>{{ item.first_name}}</p>
+      </td>
+      <td>
+        <p>{{item.amount}}</p>
+      </td>
+
+      <td>
+        <p>{{item.new_balance}}</p>
+      </td>
+      <td style="width: 30%!important;">{{item.reason}}</td>
+      <td>
+        <ion-button fill="clear" size="small" routerLink="/passengerinfo/{{item.userId}}">View</ion-button>
+        <!--<ion-button fill="clear" color="danger" size="small" (click)="delete(driver.key)">Delete</ion-button>-->
+      </td>
+    </tr>
+
+
+    </tbody>
+
+  </table>
+  <p style="color: red!important; text-align: center!important;" *ngIf="wallet.length == 0">NO DRIVER MOBILE MONEY TRANSACTIONS FOUND</p>
+
+</ion-content>
+

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <div class="ion-text-center">
+      <ion-title class=" travel_header1"><h1>Support Team</h1></ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="wallet">
+  <div class="ion-text-center support-header">
+    <br/><br/>
+    <h3>We are Here to assist you!</h3>
+    <ion-button color="newcolor" (click)="addComplain()">Send your Inquiry</ion-button>
+  </div>
+
+
+  <ion-list>
+  <ion-item-divider style="color: #606060;">
+  MESSAGE HISTORY
+  </ion-item-divider>
+  <ion-item *ngFor="let record of messages">
+  <ion-label>
+  <ion-text color="medium">
+  <p>{{ record.createAt | amDateFormat: 'YYYY-MM-DD hh:mm a'}}</p>
+  </ion-text>
+    <ion-text><p>Message: {{record.message }}</p></ion-text>
+  <ion-text>
+  <p>Phone:  <strong>{{ record.phone }}</strong>
+   <code style="background-color: #c3620b; border-radius: 10px">{{ record.status}}</code>
+  </p>
+  <p>Ref: {{record.createAt }} </p>
+    <ion-button *ngIf="record.response_from" onclick="seeReply()">See Reply</ion-button>
+  </ion-text>
+  </ion-label>
+  </ion-item>
+  </ion-list>
+
+
+
+</ion-content>

@@ -1,0 +1,151 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Riders & Drivers - {{drivers.length}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-row>
+        <ion-col size="4" size-md>
+            <div class="input-group margin">
+                <ion-label position="stacked" style="color: black">Operation Region <span
+                        style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                </ion-label>
+                <br/>
+                <ion-select
+                        [(ngModel)]="category"
+                        style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                        required="true"
+                        placeholder=" Select your Region"
+                        required="true"
+                        name="region"
+                        ngModel
+                        #uregion="ngModel"
+                >
+                    <ion-select-option value="Central Uganda">CENTRAL UGANDA</ion-select-option>
+                    <ion-select-option value="Eastern Uganda">EASTERN UGANDA</ion-select-option>
+                    <ion-select-option value="Western Uganda">WESTERN UGANDA</ion-select-option>
+                    <ion-select-option value="Northern Uganda">NORTHERN UGANDA</ion-select-option>
+                </ion-select>
+
+                <span class="input-group-btn">
+         <ion-button fill="outline" shape="round" color="dark" (click)="filter()">FILTER REGION</ion-button>
+
+                    <!--<button type="button" class="btn bg-blue btn-flat" (click)="filter()"><i class="fa fa-search"></i> Filter By Region</button>-->
+                    <!--<button type="button" class="btn bg-orange btn-flat" (click)="reset()"><i-->
+                    <!--class="fa fa-refresh"></i> Reset</button>-->
+
+    </span>
+
+            </div>
+        </ion-col>
+
+        <ion-col size="4" size-md>
+            <div class="input-group margin">
+                <ion-label position="stacked" style="color: black">Phone Number<span
+                        style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                </ion-label>
+                <br/>
+                <ion-input
+                        [(ngModel)]="contacts"
+                        style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                        required="true"
+                        placeholder="Enter Phone Number"
+                        required="true"
+                        name="contacts"
+                        ngModel
+                        #ucontacts="ngModel"
+                ></ion-input>
+
+                <span class="input-group-btn">
+         <ion-button fill="outline" shape="round" color="dark" (click)="filterContacts()">FILTER PHONE NUMBER</ion-button>
+    </span>
+
+            </div>
+        </ion-col>
+
+        <ion-col size="4" size-md>
+            <div class="input-group margin">
+                <ion-label position="stacked" style="color: black">Search Referral ID <span
+                        style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                </ion-label>
+                <br/>
+                <ion-input
+                        [(ngModel)]="reference"
+                        style="background-color: rgba(255,255,255,0.79)!important; border-radius: 7px!important;"
+                        required="true"
+                        placeholder="Enter Referral ID"
+                        required="true"
+                        name="reference"
+                        ngModel
+                        #ureference="ngModel"
+                ></ion-input>
+
+                <span class="input-group-btn">
+         <ion-button fill="outline" shape="round" color="dark" (click)="filterReference()">FILTER REFERRALS</ion-button>
+    </span>
+
+            </div>
+        </ion-col>
+    </ion-row>
+
+    <ion-buttons>
+        <ion-button (click)="printCSV();">Export Excel
+        </ion-button>
+    </ion-buttons>
+
+    <table datatable class="row-border hover" class="mat-elevation-z8">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>JOINED ON</th>
+            <th>NAME</th>
+            <th>DETAILS</th>
+            <th>REF ID</th>
+            <th>RIDE DETAILS</th>
+            <th>ACTION</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let driver of drivers; let i=index">
+            <td>{{ i+1}}</td>
+            <td>
+                <p>{{driver.createdAt | date:'MMM dd yyyy hh:mm a' }}</p>
+            </td>
+
+            <td>{{ driver.first_name }} {{ driver.surname }}</td>
+            <td>
+                <p>{{driver.name}}</p>
+                <p>{{driver.email}} / <a target="_blank" href="tel:{{driver.phoneNumber}}"
+                                         *ngIf="driver.phoneNumber">{{driver.phoneNumber}}</a></p></td>
+            <td *ngIf="driver.referenceid" style="color: green"><b>{{ driver.referenceid}}</b></td>
+            <td *ngIf="!driver.referenceid">---</td>
+            <td>
+                <p>{{driver.brand}} {{driver.model}}</p>
+                <p>{{driver.type}} • {{driver.plate}}</p>
+            </td>
+            <td>
+                <ion-button *ngIf="!driver.isApproved" fill="clear" color="primary" size="small"
+                            (click)="changeStatus(driver.key, driver.isApproved)">
+                    Approve
+                </ion-button>
+                <ion-button *ngIf="driver.isApproved" fill="clear" color="primary" size="small"
+                            (click)="changeStatus(driver.key, driver.isApproved)">
+                    DisApprove
+                </ion-button>
+                <br/>
+                <ion-button fill="clear" size="small" routerLink="/driverinfo/{{driver.key}}">View</ion-button>
+                <ion-button fill="clear" color="danger" size="small" (click)="delete(driver.key)">Delete</ion-button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p style="color: red!important; text-align: center!important;" *ngIf="!drivers">NO DRIVERS FOUND</p>
+
+
+</ion-content>

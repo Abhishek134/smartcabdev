@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="9" class="ion-padding">
+      <ion-list *ngFor="let n of notifications">
+        <ion-item>
+          <ion-label>
+            <ion-text>
+              <ion-badge>{{n.type}}</ion-badge>
+              <h3>{{n.title}}</h3>
+            </ion-text>
+            <ion-text>
+              <p>{{n.description}}</p>
+            </ion-text>
+          </ion-label>
+          <ion-button slot="end" (click)="remove(n.key)">
+            Delete
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col size="3">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input type="text" [(ngModel)]="notification.title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Description</ion-label>
+          <ion-textarea type="text" [(ngModel)]="notification.description"></ion-textarea>
+        </ion-item>
+
+        <ion-radio-group [(ngModel)]="notification.type">
+          <ion-item>
+            <ion-label>Riders</ion-label>
+            <ion-radio slot="start" value="riders"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Drivers</ion-label>
+            <ion-radio slot="start" value="drivers"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Both</ion-label>
+            <ion-radio slot="start" value="both"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <div class="ion-padding">
+          <ion-button size="block" (click)="add()">Add Message</ion-button>
+        </div>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

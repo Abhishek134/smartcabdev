@@ -1,0 +1,43 @@
+.forget {
+  text-align: right;
+  padding: 4px;
+}
+
+.padding {
+  padding: 0 16px;
+}
+
+ion-select {
+  background: transparent !important;
+  margin: auto !important;
+  border: none !important;
+}
+
+.bglogin {
+  height: 250px;
+  background-size: cover;
+  filter: blur(3px);
+  background: url('../../assets/images/header2.png') no-repeat center center;
+  position: relative;
+  padding-top: auto;
+  margin: auto;
+  -webkit-filter: blur(5px);
+}
+
+ion-toolbar {
+  //--background: transparent;
+  //--ion-color-base: transparent !important;
+  --ion-background-color: rgba(62, 63, 195, 0.65) !important;
+}
+
+ion-content {
+  //--ion-background-color: #191349;
+  --ion-background-color: #171743 !important;
+  // --ion-background-color: #5480b7 !important;
+}
+
+
+
+
+
+

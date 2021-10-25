@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isEdit ? 'EDIT RIDE' : 'ADD RIDE'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p class="notice">Icon, Map Icon images should be inside `rider/src/assets/img` folder</p>
+  <ion-row>
+    <ion-col>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked">NAME</ion-label>
+          <ion-input type="text" [(ngModel)]="car.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">ICON PATH (Displayed on Home page of Rider)</ion-label>
+          <ion-input type="text" [(ngModel)]="car.icon" placeholder="assets/img/name.png"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">MAP ICON (Display inside map) 32x32</ion-label>
+          <ion-input type="text" [(ngModel)]="car.map_icon" placeholder="assets/img/name.png"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Seats</ion-label>
+          <ion-input type="text" [(ngModel)]="car.seats"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Driver Commission</ion-label>
+          <ion-select [(ngModel)]="car.commission_type">
+            <ion-select-option value="percentage">In Percentage</ion-select-option>
+            <ion-select-option value="fixed">Fixed Price</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Commission Value</ion-label>
+          <ion-input type="text" [(ngModel)]="car.commission_value"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked">Base FEE Below 1 KM</ion-label>
+          <ion-input type="text" [(ngModel)]="car.base_low"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Base KM / First X km</ion-label>
+          <ion-input type="text" [(ngModel)]="car.base_km"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Fare for First X km (cost/1km)
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="car.base_fare"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Cost After X km (cost/1km)</ion-label>
+          <ion-input type="text" [(ngModel)]="car.per_km"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Per Minute
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="car.per_minute"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Tax (%)</ion-label>
+          <ion-input type="text" [(ngModel)]="car.tax"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <div class="ion-padding">
+    <ion-button *ngIf="!isEdit" expand="block" size="small" (click)="add()">ADD</ion-button>
+    <ion-button *ngIf="isEdit" expand="block" size="small" (click)="update()">UPDATE</ion-button>
+    <ion-button *ngIf="isEdit" expand="block" fill="clear" size="small" color="danger" (click)="delete()">Delete
+    </ion-button>
+  </div>
+</ion-content>

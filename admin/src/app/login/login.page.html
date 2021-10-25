@@ -1,0 +1,28 @@
+<!-- <ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="ion-padding">
+  <div class="loginBox">
+    <div style="width: 300px">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="text" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-button expand="block" (click)="login()">Login</ion-button>
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding">
+        <!--<p>Please create new account from firebase auth & update your admin Email in environment.prod.ts</p>-->
+      </div>
+    </div>
+  </div>
+
+</ion-content>

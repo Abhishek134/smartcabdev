@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{trip.createdAt}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none" *ngIf="trip.createdAt != null">
+    <ion-item>
+      <ion-label>
+        <ion-text>
+          <p class="datetime">{{trip.createdAt | date: 'MMM dd, yyyy, hh:mm a'}}</p>
+        </ion-text>
+      </ion-label>
+      <ion-note slot="end" class="tripstatus">
+        {{trip.status}}
+      </ion-note>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-label>
+        <ion-text>
+          <h3>{{trip.origin.vicinity}}</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-label>
+        <ion-text>
+          <h3>{{trip.destination.vicinity}}</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{driver.photoURL}}" />
+      </ion-avatar>
+      <ion-label>
+        <ion-text>
+          <h3>{{driver.name}}</h3>
+        </ion-text>
+        <ion-text>
+          <p>{{ 'RATED' | translate }} {{trip.rating}}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <div class="pricing">
+    <table>
+      <tr>
+        <td>{{ 'FEE' | translate }}</td>
+        <td>{{ trip.currency }} {{trip.rawfee}}</td>
+      </tr>
+      <tr>
+        <td>{{ 'DISCOUNT' | translate }} <br /> <b>{{trip.promocode}} • {{trip.discount}} %</b></td>
+        <td>{{ trip.currency }} {{ discount }}</td>
+      </tr>
+      <tr>
+        <td>{{ 'TAX' | translate }} - {{ trip.tax }} %</td>
+        <td>{{ trip.currency }} {{ tax }}</td>
+      </tr>
+      <tr>
+        <td>{{ 'FINAL' | translate }}</td>
+        <td>{{ trip.currency }} {{trip.fee}}</td>
+      </tr>
+      <tr>
+        <td>{{ 'PAYMENT_MODE' | translate }}</td>
+        <td>{{trip.paymentMethod}}</td>
+      </tr>
+    </table>
+  </div>
+</ion-content>

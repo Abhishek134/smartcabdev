@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'SETTINGS' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button href="tel:{{support}}" fill="clear">{{'HELP' | translate}}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{user.photoURL}}" />
+      </ion-avatar>
+      <ion-label>
+        <ion-text>
+          <h3>{{user.name}}</h3>
+        </ion-text>
+        <ion-text>
+          <p>{{user.phoneNumber}}</p>
+        </ion-text>
+      </ion-label>
+      <ion-button slot="end" routerLink="/profile">{{'EDIT' | translate}}</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'LANGUAGE' | translate}}</ion-label>
+      <ion-select (ionChange)="changeLang()" [(ngModel)]="lang" slot="end">
+        <ion-select-option *ngFor="let lang of langArr" value="{{lang.code}}">{{lang.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'PUSH_NOTIFICATION' | translate}}</ion-label>
+      <ion-toggle slot="end" (click)="change()" [(ngModel)]="isPushEnabled"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>
+          <h3>Background Mode</h3>
+        </ion-text>
+        <ion-text>
+          <p>Enable Tracking Even after minimizing the app</p>
+        </ion-text>
+      </ion-label>
+      <ion-toggle slot="end" [(ngModel)]="settings.bgmode"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>
+          <h3>Always on</h3>
+        </ion-text>
+        <ion-text>
+          <p>Driver will goes online after completing the each trip</p>
+        </ion-text>
+      </ion-label>
+      <ion-toggle slot="end" [(ngModel)]="settings.alwaysOn"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar padding="true">
+    <ion-button color="newcolor" expand="block" (click)="save()">{{'SAVE' | translate}}</ion-button>
+  </ion-toolbar>
+</ion-footer>

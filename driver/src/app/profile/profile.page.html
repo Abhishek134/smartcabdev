@@ -1,0 +1,453 @@
+
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>
+            <!--SMART CABS<br/>-->
+            <small style="text-align: center!important;">SMART CABS DRIVER</small>
+        </ion-title>
+        <ion-buttons slot="end">
+
+            <ion-button (click)="logout()">
+                <ion-icon name="log-in" color="danger"></ion-icon>&nbsp; LOGOUT
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <div *ngIf="step == 1">
+        <br/>
+        <ion-item-divider style="background-color: #092d50!important; color: whitesmoke!important;">Update Personal
+            Photo
+        </ion-item-divider>
+
+        <div style="text-align: center;">
+            <img src="{{ user.photoURL }}" style="width:50px;height:50px;border-radius:100px" (click)="chooseFile()">
+            <form ngNoForm>
+                <input id="avatar" name="file" type="file" (change)="upload()">
+            </form>
+        </div>
+
+
+        <ion-list lines="none">
+            <ion-item-divider style="background-color: #092d50!important; color: whitesmoke!important;">Personal
+                Details
+            </ion-item-divider>
+
+            <ion-item>
+                <ion-label position="floating">First Name</ion-label>
+                <ion-input
+                        type="text"
+                        [(ngModel)]="user.first_name"
+                        placeholder="Enter First name"
+                        name="first_name"
+                        ngModel
+                        #ufirst_name="ngModel"
+                        placeholder="Enter First Name"
+
+                ></ion-input>
+                <div style="color: white!important; text-align: center!important;"
+                     *ngIf="ufirst_name.touched && !ufirst_name.valid">
+                    <ion-text color="danger">
+                        <p *ngIf="ufirst_name.errors.required">Please Enter First Name</p>
+
+                    </ion-text>
+                </div>
+
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Surname</ion-label>
+                <ion-input
+                        type="text"
+                        [(ngModel)]="user.surname"
+                        placeholder="Enter First name"
+                        name="surname"
+                        ngModel
+                        #usurname="ngModel"
+                        placeholder="Enter Surname"
+
+                ></ion-input>
+                <div style="color: white!important; text-align: center!important;"
+                     *ngIf="usurname.touched && !usurname.valid">
+                    <ion-text color="danger">
+                        <p *ngIf="usurname.errors.required">Please Enter Surname</p>
+
+                    </ion-text>
+                </div>
+
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">Email Address</ion-label>
+                <ion-input type="email" [(ngModel)]="user.email" placeholder="Enter tiyr Email">
+                </ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">Phone Number</ion-label>
+                <ion-input type="tel" [(ngModel)]="user.phoneNumber"
+                           placeholder="Enter Phone Number"></ion-input>
+            </ion-item>
+
+            <!--<ion-item>-->
+                <!--<ion-label position="stacked">Age</ion-label>-->
+                <!--<ion-input type="text" [(ngModel)]="user.age" placeholder="Enter your Age"-->
+                           <!--required></ion-input>-->
+            <!--</ion-item>-->
+
+            <ion-item>
+                <ion-label position="stacked">Gender</ion-label>
+                <ion-input type="text" [(ngModel)]="user.genders" placeholder="Enter your Age"
+                           required></ion-input>
+            </ion-item>
+
+            <br/>
+            <ion-item-divider style="background-color: #092d50!important; color: whitesmoke!important;">Location
+                Details
+            </ion-item-divider>
+            <br/>
+            <ion-item>
+                <ion-label position="stacked">Country</ion-label>
+                <ion-input type="text" [(ngModel)]="user.country" placeholder="Enter your Country"
+                           required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">City</ion-label>
+                <ion-input type="text" [(ngModel)]="user.city" placeholder="Enter your City"
+                           required></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">District</ion-label>
+                <ion-input type="text" [(ngModel)]="user.district" placeholder="Enter your District"
+                           required></ion-input>
+            </ion-item>
+
+
+            <br/>
+            <ion-item-divider style="background-color: #092d50!important; color: whitesmoke!important;">Security
+                Details
+            </ion-item-divider>
+            <br/>
+            <ion-item>
+                <ion-label position="stacked">ID Type</ion-label>
+                <ion-select placeholder="Select One" [(ngModel)]="user.idcard">
+
+                    <span *ngIf="user.idcard == 'Passport'">
+                        <ion-select-option value="National Identicard">National Identicard</ion-select-option>
+                        <ion-select-option value="Passport" selected>Passport</ion-select-option>
+                        <ion-select-option value="Driver Licence">Driver Licence</ion-select-option>
+                    </span>
+
+                    <span *ngIf="user.idcard == 'Driver Licence'">
+                        <ion-select-option value="National Identicard">National Identicard</ion-select-option>
+                        <ion-select-option value="Passport">Passport</ion-select-option>
+                        <ion-select-option value="Driver Licence" selected>Driver Licence</ion-select-option>
+                    </span>
+
+                    <span *ngIf="user.idcard == 'National Identicard'">
+                        <ion-select-option value="National Identicard" selected>National Identicard</ion-select-option>
+                        <ion-select-option value="Passport">Passport</ion-select-option>
+                        <ion-select-option value="Driver Licence">Driver Licence</ion-select-option>
+                    </span>
+
+                    <span *ngIf="!user.idcard">
+                        <ion-select-option value="National Identicard">National Identicard</ion-select-option>
+                        <ion-select-option value="Passport">Passport</ion-select-option>
+                        <ion-select-option value="Driver Licence">Driver Licence</ion-select-option>
+                    </span>
+
+
+                </ion-select>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="stacked">Identicard Number</ion-label>
+                <ion-input type="text" [(ngModel)]="user.nin" placeholder="Enter your ID Number"
+                           required></ion-input>
+            </ion-item>
+            <br/>
+            <ion-item-divider style="background-color: #092d50!important; color: whitesmoke!important;">Payment
+                Details
+            </ion-item-divider>
+            <br/>
+            <ion-item>
+                <ion-label position="stacked">Payment Details</ion-label>
+                <ion-textarea [(ngModel)]="user.payment_detail"></ion-textarea>
+            </ion-item>
+            <br/><br/>
+
+
+        </ion-list>
+
+
+    </div>
+
+
+    <div *ngIf="step == 2">
+        <ion-list lines="none">
+
+            <br/>
+            <ion-item-divider style="background-color: #092d50!important; color: whitesmoke!important;">Ride
+                Description
+            </ion-item-divider>
+            <br/>
+            <ion-item>
+                <ion-label position="stacked">Ride Name
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="user.brand"
+                           placeholder="E.g Bajaj Boxer"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Ride Model Year
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="user.model"
+                           placeholder="Enter Model Year"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Plate Number</ion-label>
+                <ion-input type="text" [(ngModel)]="user.plate"
+                           placeholder="Enter Plate Number"></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label position="stacked">Ride Category {{ user.type }}
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="user.type" disabled
+                           placeholder="Enter Category" ></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="types">
+                <ion-label position="stacked">{{'RIDE CATEGORY' | translate}}</ion-label>
+                <ion-select [(ngModel)]="user.type"  disabled>
+                    <ion-select-option value="{{ car.type }}" *ngFor="let car of types">
+                        <!--<span>{{ car.type }}</span>-->
+                        <div *ngIf="car.type == 'boda'">
+                            <span *ngIf="car.type == 'boda'" (select)="true">Smart Bike</span>
+                            <!--<span *ngIf="car.type == 'cheap_cars'">Smart Go Mini</span>-->
+                            <span *ngIf="car.type == 'cheap_cars'">Smart Go Mini</span>
+                            <span *ngIf="car.type == 'xl'">Smart Go XL</span>
+
+
+                        </div>
+
+                        <div *ngIf="car.type == 'cheap_cars'">
+                            <span *ngIf="car.type == 'boda'" >Smart Bike</span>
+                            <!--<span *ngIf="car.type == 'cheap_cars'">Smart Go Mini</span>-->
+                            <span *ngIf="car.type == 'cheap_cars'" (select)="true">Smart Go Mini</span>
+                            <span *ngIf="car.type == 'xl'">Smart Go XL</span>
+                        </div>
+
+                        <div *ngIf="car.type == 'xl'">
+                            <span *ngIf="car.type == 'boda'" >Smart Bike</span>
+                            <!--<span *ngIf="car.type == 'cheap_cars'">Smart Go Mini</span>-->
+                            <span *ngIf="car.type == 'cheap_cars'" >Smart Go Mini</span>
+                            <span *ngIf="car.type == 'xl'" (select)="true">Smart Go XL</span>
+                        </div>
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">Ride Color</ion-label>
+                <ion-input type="text" [(ngModel)]="user.color"
+                           placeholder="Enter Ride Color"></ion-input>
+            </ion-item>
+        </ion-list>
+
+    </div>
+
+    <div *ngIf="step == 3">
+
+
+        <br/>
+        <ion-item-divider style="background-color: #092d50!important; color: whitesmoke!important;">
+            Documents
+        </ion-item-divider>
+        <br/>
+
+        <ion-card class="ion-no-padding">
+            <ion-card-header>
+                <ion-card-subtitle>1: Photo</ion-card-subtitle>
+                <ion-card-title></ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <!--                        <input type="file" (change)="uploadId($event)">-->
+                <ng-container *ngIf="user.photo2URL">
+                    <ion-img [src]="user.photo2URL"></ion-img>
+                </ng-container>
+                <div *ngIf="(photoPercent$ | async) as percentage">
+                    Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                    <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                </div>
+                <ion-button slot="end" expand="block" (click)="choosePhoto()">Photo</ion-button>
+                <div>
+                    <form ngNoForm>
+                        <input id="passphoto" name="file" type="file" (change)="uploadPhoto()" hidden>
+                    </form>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="ion-no-padding">
+            <ion-card-header>
+                <ion-card-subtitle>2: Upload National ID Front View*</ion-card-subtitle>
+                <ion-card-title></ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <!--                        <input type="file" (change)="uploadId($event)">-->
+                <ng-container *ngIf="user.ninFront">
+                    <ion-img [src]="user.ninFront"></ion-img>
+                </ng-container>
+                <div *ngIf="(iduploadPercent$ | async) as percentage">
+                    Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                    <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                </div>
+                <ion-button slot="end" expand="block" (click)="chooseDocs()"> National ID FRONT</ion-button>
+                <div>
+                    <form ngNoForm>
+                        <input id="ninFront" name="file" type="file" (change)="uploadDocs()" hidden>
+                    </form>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="ion-no-padding">
+            <ion-card-header>
+                <ion-card-subtitle>3: Upload National ID Back View*</ion-card-subtitle>
+                <ion-card-title></ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <!--                        <input type="file" (change)="uploadId($event)">-->
+                <ng-container *ngIf="user.ninBack">
+                    <ion-img [src]="user.ninBack"></ion-img>
+                </ng-container>
+                <div *ngIf="(idbackuploadPercent$ | async) as percentage">
+                    Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                    <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                </div>
+                <ion-button slot="end" expand="block" (click)="chooseNinBack()"> National ID BACK</ion-button>
+                <div>
+                    <form ngNoForm>
+                        <input id="ninBack" name="file" type="file" (change)="uploadNinBack()" hidden>
+                    </form>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="ion-no-padding">
+            <ion-card-header>
+                <ion-card-subtitle>4: Upload Driving Permit*</ion-card-subtitle>
+                <ion-card-title></ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <!--                        <input type="file" (change)="uploadId($event)">-->
+                <ng-container *ngIf="user.permitURL">
+                    <ion-img [src]="user.permitURL"></ion-img>
+                </ng-container>
+
+                <div *ngIf="(permituploadPercent$ | async) as percentage">
+                    Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                    <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                </div>
+                <ion-button slot="end" expand="block" (click)="choosePermit()"> DRIVER PERMIT</ion-button>
+                <div>
+                    <form ngNoForm>
+                        <input id="permit" name="file" type="file" (change)="uploadPermit()" hidden>
+                    </form>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="ion-no-padding">
+            <ion-card-header>
+                <ion-card-subtitle>6: Upload Ride Photo *</ion-card-subtitle>
+                <ion-card-title></ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <!--                        <input type="file" (change)="uploadId($event)">-->
+                <ng-container *ngIf="user.vehicleURL">
+                    <ion-img [src]="user.vehicleURL"></ion-img>
+                </ng-container>
+
+                <div *ngIf="(vehicleloadPercent$ | async) as percentage">
+                    Upload Progress: <span>{{ percentage / 100 | percent }}</span>
+                    <ion-progress-bar color="tertiary" [value]="percentage"></ion-progress-bar>
+                </div>
+                <ion-button slot="end" expand="block" (click)="chooseVehicle()"> RIDE PHOTO</ion-button>
+                <div>
+                    <form ngNoForm>
+                        <input id="vehicle" name="file" type="file" (change)="uploadVehicle()" hidden>
+                    </form>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+
+    </div>
+
+
+</ion-content>
+
+
+<!-- Footer without a border -->
+<ion-footer class="ion-no-border">
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6" padding>
+                    <ion-button color="newcolor" shape="round" *ngIf="step != 1" expand="block" size="small"
+                                (click)="previousPage()"
+                                style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;">
+                        <ion-icon name="rewind"></ion-icon>
+                        Previous
+                    </ion-button>
+
+                </ion-col>
+                <ion-col size="6" padding>
+                    <ion-button color="newcolor" shape="round" size="small" expand="block"
+                                (click)="nextPage()" *ngIf="step != 3"
+                                style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;"> Next
+                        <ion-icon name="fastforward"></ion-icon>
+                    </ion-button>
+
+                    <ion-button *ngIf="step == 3"
+                                expand="block"
+                                color="newcolor"
+                                size="small"
+                                style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;"
+                                (click)="save()"
+                    ><p style="color: #ffffff!important;">{{'SUBMIT' | translate}}</p>
+                    </ion-button>
+
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </ion-toolbar>
+</ion-footer>
+
+
+<!--<ion-footer class="ion-padding" style="background-color: #3E3FC3;!important;">-->
+<!--<ion-button expand="block" (click)="save()" color="newcolor"-->
+<!--style="border-radius: 7px!important; box-shadow: 0 8px 6px -6px black;"><p-->
+<!--style="color: #ffffff!important;">{{'SAVE' | translate}}</p></ion-button>-->
+<!--</ion-footer>-->
+
+
+

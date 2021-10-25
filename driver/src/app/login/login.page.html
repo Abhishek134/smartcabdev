@@ -1,0 +1,83 @@
+<ion-content>
+    <div class="bglogin" style=" filter: blur(0.2px);">
+        <!--<div class="ion-text-center" style="padding-top: 0;"></div>-->
+    </div>
+
+    <div class="ion-text-center"><h1 style="color: whitesmoke!important;">DRIVER</h1></div>
+    <div>
+        <form #loginForm="ngForm">
+            <ion-list lines="none">
+
+                <ion-item class="myfield">
+                    <ion-label position="stacked" class="ion-text-left" style="color: white">{{'EMAIL_ADDRESS'|
+                        translate}} <span style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                    </ion-label>
+                    <ion-input
+                            type="email"
+                            [(ngModel)]="userInfo.email"
+                            name="email"
+                            ngModel
+                            #uemail="ngModel"
+                            required
+                            placeholder="Enter Email"
+                    ></ion-input>
+
+                    <div style="color: white!important; text-align: left!important;"
+                         *ngIf="uemail.touched && !uemail.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="uemail.errors.required">Enter valid email</p>
+                        </ion-text>
+                    </div>
+
+                </ion-item>
+                
+                <ion-item>
+                    <ion-label position="stacked" class="ion-text-left" style="color: white">{{'PASSWORD'| translate}}
+                        <span style="color: red; font-size: 10px!important;"><ion-icon name="star"></ion-icon></span>
+                    </ion-label>
+                    <ion-input
+                            type="password"
+                            [(ngModel)]="userInfo.password"
+                            name="password"
+                            ngModel
+                            #upassword="ngModel"
+                            required
+                            placeholder="Enter Password"
+                    ></ion-input>
+
+                    <div style="color: white!important; text-align: center!important;"
+                         *ngIf="upassword.touched && !upassword.valid">
+                        <ion-text color="danger">
+                            <p *ngIf="upassword.errors.required">Enter valid Password</p>
+                        </ion-text>
+                    </div>
+
+                </ion-item>
+
+            </ion-list>
+            <div style="text-align: right;">
+                <ion-button color="medium" fill="clear" routerLink="/forget">
+                    <small style="color: white">{{'FORGOT' | translate}}</small>
+                </ion-button>
+            </div>
+
+            <div class="ion-padding">
+                <ion-button
+                        expand="block"
+                        (click)="login()"
+                        color="newcolor"
+                        style="border-radius: 20px!important; box-shadow: 0 8px 6px -6px black;"
+                        [disabled]="!loginForm.valid"
+                ><p style="color: #ffffff!important;">LOGIN</p></ion-button>
+                &nbsp;&nbsp;
+                <ion-button *ngIf="isRegisterEnabled" fill="clear" expand="block" routerLink="/register"
+                            style="color: white">
+                    {{'SIGNUP_TEXT' | translate}}
+                </ion-button>
+
+            </div>
+
+
+        </form>
+    </div>
+</ion-content>

@@ -1,0 +1,65 @@
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.message {
+  text-align: center;
+  background: #ff001c;
+  margin: 0;
+  padding: 4px;
+  font-size: 14px;
+}
+
+ion-toolbar {
+  // --ion-toolbar-background-color: transparent;
+  --ion-background-color: rgb(7,31,180); color: #ffffff!important;
+  --ion-toolbar-text-color: white;
+}
+
+#off {
+  color: #30df0b;
+}
+
+.map {
+  height: 100%;
+}
+
+//.home-background {
+//  --background: none;
+//  background: url(../../assets/img/logo1.png) no-repeat center center fixed !important;
+//  background-size: cover!important;
+//}
+
+.bgx {
+  background-image: url('../../assets/images/smartside1.jpg');
+  background-repeat: no-repeat;
+  height: 200px;
+  background-size: cover;
+  filter: blur(3px);
+  background-position: center center;
+  position: relative;
+  padding-top: auto;
+  margin: auto;
+
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+  //
+  //  // mask-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/sun.svg);
+  //  mask-image: url(../../assets/images/blob.svg);
+  //  mask-size: 100vmin;
+  //  mask-repeat: no-repeat;
+  //  mask-position: center;
+}
+
+a:hover {
+  color: red;
+}
+
+ion-content.map {
+  --background: transparent;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -1,0 +1,404 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+            SERIAL: {{driver.serial}}
+        </ion-buttons>
+        <ion-title></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-item lines="none">
+        <ion-avatar slot="start">
+            <img src="{{driver.photoURL}}"/>
+        </ion-avatar>
+        <ion-label>
+            <ion-text>
+                <h3>{{driver.name}}</h3>
+            </ion-text>
+            <ion-text>
+                <p>{{driver.email}}</p>
+            </ion-text>
+            <ion-text>
+                <a href="tel:{{driver.phoneNumber}}">Call: {{driver.phoneNumber}}</a>
+            </ion-text>
+        </ion-label>
+    </ion-item>
+    <ion-segment [(ngModel)]="tabs">
+        <ion-segment-button value="carinfo">
+            RIDE INFORMATION
+        </ion-segment-button>
+        <ion-segment-button value="ridehistroy" (click)="getTrips()">
+            Ride History
+        </ion-segment-button>
+        <ion-segment-button value="wallet" (click)="getWallet()">
+            Wallet ({{driver.balance}})
+        </ion-segment-button>
+
+        <ion-segment-button value="mMoney" (click)="getMobileMoney()">
+            Mobile Money Wallet Deposits
+        </ion-segment-button>
+
+        <ion-segment-button value="referral" (click)="getDriverInfo()">
+            Smart Cabs Payments
+        </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="tabs">
+        <div *ngSwitchCase="'carinfo'">
+            <ion-list lines="none">
+
+                <ion-row>
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Account Status</ion-label>
+                            <span *ngIf="driver.isApproved" class="pull-right" style="color: green;"><ion-badge
+                                    color="warning">Active</ion-badge></span>
+                            <span *ngIf="!driver.isApproved" class="pull-right" style="color: red"><ion-badge
+                                    color="danger">Not Active</ion-badge></span>
+                        </ion-item>
+
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Operation Region</ion-label>
+                            <span class="pull-right" style="color: black!important;"><ion-badge color="dark">{{ driver.region }}</ion-badge></span>
+                        </ion-item>
+
+                    </ion-col>
+
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Name</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.first_name"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Surname</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.surname"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Serial</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.serial" disabled></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12" size-md>
+
+                        <ion-item>
+                            <ion-label position="stacked">Category</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.account_type"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+
+                        <ion-item>
+                            <ion-label position="stacked">Referral ID</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.referenceid"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">PLATE NUMBER</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.plate"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">CAR BRAND</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.brand"></ion-input>
+                            <a *ngIf="driver.carImg != null" href="{{driver.carImg}}" target="_blank" ion-button
+                               item-right
+                               clear>View
+                                Image</a>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Color</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.color"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12" size-md>
+                    <ion-item>
+                        <ion-label position="stacked">District</ion-label>
+                        <ion-input type="text" [(ngModel)]="driver.district"></ion-input>
+                    </ion-item>
+                    </ion-col>
+                    <ion-col size="12" size-md>
+
+                        <ion-item>
+                            <ion-label position="stacked">Email</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.email"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Password</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.password"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Wallet Balance</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.balance"></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-item>
+                            <ion-label position="stacked">Registration Number</ion-label>
+                            <ion-input type="text" [(ngModel)]="driver.plate"></ion-input>
+                        </ion-item>
+
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+
+                    <ion-col size="12" size-md>
+                        <ion-card *ngIf="driver.photo2URL">
+                            <ion-img [src]="driver.photo2URL"></ion-img>
+                            <ion-card-header>
+                                <ion-card-subtitle></ion-card-subtitle>
+                                <ion-card-title>PROFILE PHOTO</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <a href="{{driver.photo2URL}}" class="btn btn-danger pull-right btn-block btn-sm">
+                                    DOWNLOAD & VIEW</a>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col size="12" size-md>
+
+                        <ion-card *ngIf="driver.ninFront">
+                            <ion-img [src]="driver.ninFront"></ion-img>
+                            <ion-card-header>
+                                <ion-card-subtitle>Front</ion-card-subtitle>
+                                <ion-card-title>NATIONAL ID</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <a href="{{driver.ninFront}}" class="btn btn-danger pull-right btn-block btn-sm">
+                                    DOWNLOAD & VIEW</a>
+                            </ion-card-content>
+                        </ion-card>
+
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+
+                        <ion-card *ngIf="driver.ninBack">
+                            <ion-img [src]="driver.ninBack"></ion-img>
+                            <ion-card-header>
+                                <ion-card-subtitle>Back</ion-card-subtitle>
+                                <ion-card-title>NATIONAL ID</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <a href="{{driver.ninBack}}" class="btn btn-danger pull-right btn-block btn-sm">
+                                    DOWNLOAD & VIEW</a>
+                            </ion-card-content>
+                        </ion-card>
+
+                    </ion-col>
+
+                    <ion-col size="12" size-md>
+                        <ion-card *ngIf="driver.permitURL">
+                            <ion-img [src]="driver.permitURL"></ion-img>
+                            <ion-card-header>
+                                <ion-card-subtitle></ion-card-subtitle>
+                                <ion-card-title>DRIVING PERMIT</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <a href="{{driver.permitURL}}" class="btn btn-danger pull-right btn-block btn-sm">
+                                    DOWNLOAD & VIEW</a>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col size="12" size-md>
+                        <ion-card *ngIf="driver.vehicleURL">
+                            <ion-img [src]="driver.vehicleURL"></ion-img>
+                            <ion-card-header>
+                                <ion-card-subtitle></ion-card-subtitle>
+                                <ion-card-title>RIDE PHOTO</ion-card-title>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <a href="{{driver.vehicleURL}}" class="btn btn-danger pull-right btn-block btn-sm">
+                                    DOWNLOAD & VIEW</a>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+
+
+                <ion-item *ngIf="driver.docsURL">
+                    <ion-label>Documents</ion-label>
+                    <a href="{{driver.docsURL}}" target="_blank" ion-button item-right>View / Download</a>
+                </ion-item>
+
+            </ion-list>
+        </div>
+        <div *ngSwitchCase="'ridehistroy'">
+            <ion-list lines="none">
+                <ion-item *ngFor="let trip of trips">
+                    <ion-label>
+                        <ion-text>
+                            <p>ID: {{ trip.createdAt }}</p>
+                        </ion-text>
+                        <ion-text>
+                            <h3><span style="color:#4CAF50">•</span> {{ trip.origin.vicinity }}</h3>
+                            <p>{{ trip.pickedUpAt | date: 'medium'}}</p>
+                        </ion-text>
+                        <ion-text>
+                            <h3><span style="color:#F44336">•</span> {{ trip.destination.vicinity }}</h3>
+                            <p>{{ trip.droppedOffAt | date: 'medium'}}</p>
+                        </ion-text>
+                        <ion-text>
+                            <ion-row>
+                                <ion-col>
+                                    <p>FEE: {{trip.currency}} {{trip.fee}}</p>
+                                </ion-col>
+                                <ion-col *ngIf="trip.discount != 0">
+                                    <p>Discount: {{trip.discount}} ({{trip.promo}})</p>
+                                </ion-col>
+                                <ion-col>
+                                    <p>Payment Mode: {{ trip.paymentMethod }}</p>
+                                </ion-col>
+                            </ion-row>
+                        </ion-text>
+                    </ion-label>
+                    <ion-badge slot="end">
+                        {{trip.currency}} {{ (trip.fee - (trip.fee * trip.discount / 100)).toFixed(2) }}
+                    </ion-badge>
+                </ion-item>
+            </ion-list>
+            <p style="color: red!important; text-align: center!important;">NO TRIP HISTORY YET</p>
+        </div>
+
+        <div *ngSwitchCase="'wallet'">
+            <ion-list lines="none">
+                <ion-item *ngFor="let record of records">
+                    <ion-label>
+                        <ion-text color="medium">
+                            <p>{{ record.createdAt | date: 'medium'}}</p>
+                        </ion-text>
+                        <ion-text>
+                            <h3>Requested
+                                <ion-badge>{{currency}} {{ record.amount }}</ion-badge>
+                                is <code>{{ record.status}}</code>
+                            </h3>
+                            <p>Ref: {{record.createdAt }} / Type: {{ record.type }} </p>
+                        </ion-text>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
+
+        <div *ngSwitchCase="'mMoney'">
+            <table
+                    datatable="ng"
+                    *ngIf="showContent"
+                    id="dx4"
+                    class="table-bordered table-striped row-border hover">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Deposited Amount (UGX)</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th>Payment Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let record of deposits">
+                    <td>ID: <b>{{ record.createAt | date: 'medium'}}</b></td>
+                    <td>{{ record.amount }}.00/=</td>
+                    <td><code>{{ record.paymentMethod}}</code></td>
+                    <td><code>{{ record.status}}</code></td>
+                    <td>{{ record.type }}</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+            <p style="color: red!important; text-align: center!important;">NO MOBILE MONEY DEPOSITS FOUND</p>
+        </div>
+
+        <div *ngSwitchCase="'referral'">
+            <table datatable class="row-border hover" class="mat-elevation-z8">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>JOINED ON</th>
+                    <th>NAME</th>
+                    <th>DETAILS</th>
+                    <th>REF ID</th>
+                    <th>RIDE DETAILS</th>
+                    <th>ACTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of referrals; let i=index">
+                    <td>{{ i+1}}</td>
+                    <td>
+                        <p>{{item.createdAt | date:'MMM dd yyyy hh:mm a' }}</p>
+                    </td>
+
+                    <td>{{ item.first_name }} {{ item.surname }}</td>
+                    <td>
+                        <p>{{driver.name}}</p>
+                        <p>{{driver.email}} / <a target="_blank" href="tel:{{driver.phoneNumber}}"
+                                                 *ngIf="driver.phoneNumber">{{driver.phoneNumber}}</a></p></td>
+                    <td>{{ item.serial}} - {{ item.reference }}</td>
+                    <td>
+                        <p>{{driver.brand}} {{driver.model}}</p>
+                        <p>{{driver.type}} • {{driver.plate}}</p>
+                    </td>
+                    <td>
+                        <ion-button *ngIf="!item.isApproved" fill="clear" color="primary" size="small"
+                                    (click)="changeStatus(item.key, item.isApproved)">
+                            Approve
+                        </ion-button>
+                        <ion-button *ngIf="item.isApproved" fill="clear" color="primary" size="small"
+                                    (click)="changeStatus(item.key, item.isApproved)">
+                            DisApprove
+                        </ion-button>
+                        <br/>
+                        <ion-button fill="clear" size="small" routerLink="/driverinfo/{{item.key}}">View</ion-button>
+                        <ion-button fill="clear" color="danger" size="small" (click)="delete(item.key)">Delete
+                        </ion-button>
+                    </td>
+                </tr>
+
+                <!--<p style="text-align: center!important; color: red" *ngIf="!referrals">NO TRANSACTIONS FOUND!</p>-->
+
+                </tbody>
+            </table>
+            <p style="color: red!important; text-align: center!important;" *ngIf="!referrals">NO TRANSACTIONS FOUND!</p>
+        </div>
+    </div>
+
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" (click)="updateDriver()">Update</ion-button>
+    </ion-toolbar>
+</ion-footer>

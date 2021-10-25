@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Smart Go XL- {{drivers.length}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <table datatable class="row-border hover" class="mat-elevation-z8">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Joined On</th>
+      <th>Detail</th>
+      <th>Ride Detail</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let driver of drivers; let i=index">
+      <td>{{ i+1}}</td>
+      <td>
+        <p>{{driver.createdAt | date:'MMM dd yyyy hh:mm a' }}</p>
+      </td>
+      <td>
+        <p>{{driver.name}}</p>
+        <p>{{driver.email}} / <a target="_blank" href="tel:{{driver.phoneNumber}}"
+                                 *ngIf="driver.phoneNumber">{{driver.phoneNumber}}</a></p>
+      </td>
+      <td>
+        <p>{{driver.brand}} {{driver.model}}</p>
+        <p>{{driver.type}} • {{driver.plate}}</p>
+      </td>
+      <td>
+        <ion-button *ngIf="!driver.isApproved" fill="clear" color="primary" size="small"
+                    (click)="changeStatus(driver.key, driver.isApproved)">
+          Approve
+        </ion-button>
+        <ion-button *ngIf="driver.isApproved" fill="clear" color="primary" size="small"
+                    (click)="changeStatus(driver.key, driver.isApproved)">
+          DisApprove
+        </ion-button>
+        <br/>
+        <ion-button fill="clear" size="small" routerLink="/driverinfo/{{driver.key}}">View</ion-button>
+        <ion-button fill="clear" color="danger" size="small" (click)="delete(driver.key)">Delete</ion-button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ion-content>
+
+

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tracking"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <!--  -->
+      <h1 style=" color: rgb(255, 255, 255); text-align: center;"
+                      class="">
+                     Smart Cabs </h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="text-align: center">
+    <h3 style="color:#1b6b2b" *ngIf="trip.fee"><b >{{ trip.currency }} {{trip.fee | number: '1.0-0'}}/=</b></h3>
+    <h3 style="color:#1b6b2b" *ngIf="!trip.fee"><b >{{ trip.currency }} {{trip.fee}}</b></h3>
+  </div>
+  <div class="pricing">
+    <table>
+      <tr>
+        <td>Fee</td>
+        <td>{{ trip.currency }} {{trip.rawfee}}</td>
+      </tr>
+      <tr>
+        <td>Discount <br /> <b>{{trip.promocode}} • {{trip.discount}} %</b></td>
+        <td>{{ trip.currency }} {{ discount }}</td>
+      </tr>
+      <tr>
+        <td>Tax - {{ trip.tax }} %</td>
+        <td>{{ trip.currency }} {{ tax }}</td>
+      </tr>
+      <tr>
+        <td>Final</td>
+        <td>{{ trip.currency }} {{trip.fee}}</td>
+      </tr>
+      <tr>
+        <td>Payment Mode</td>
+        <td>{{trip.paymentMethod}}</td>
+      </tr>
+
+      <!--<tr>-->
+        <!--<td>Picked At</td>-->
+        <!--<td>{{trip.pickedUpAt}}</td>-->
+      <!--</tr>-->
+    </table>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center ">
+    <img src="{{ (driver)?.photoURL }}" style="height:80px" />
+    <h3>{{(driver)?.name}}</h3>
+    <p>{{ (driver)?.plate }} • {{ (driver)?.brand }}</p>
+    <ion-rating [rate]="rating" (rateChange)="onRateChange($event)"></ion-rating>
+    <ion-button color="dark" (click)="rateTrip()">RATE THIS TRIP</ion-button>
+  </div>
+  <br/>
+</ion-content>
+<ion-footer>
+
+  <ion-toolbar>
+    <div padding>
+    <ion-button expand="block" color="dark" (click)="finishTrip()" color="newcolor" 
+    style="border-radius: 7px!important; box-shadow: 0 8px 6px -6px black;"
+    >Finish THIS TRIP</ion-button>
+  </div>
+  </ion-toolbar>
+</ion-footer>

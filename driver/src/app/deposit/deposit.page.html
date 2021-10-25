@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons><div class="ion-text-center">
+    <ion-title class=" travel_header1"><h1>Cashless Account</h1></ion-title>
+  </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="wallet">
+  <div class="ion-text-center widhdraw-header">
+    <h3>UGX: {{ (driver)?.balance }}/=</h3>
+    <ion-button color="newcolor" (click)="depositMoney()">Top up Mobile Money</ion-button>
+  </div>
+
+
+  <ion-list>
+    <ion-item-divider style="color: #606060;">
+      Deposit History
+    </ion-item-divider>
+    <ion-item *ngFor="let record of deposits">
+      <ion-label>
+        <ion-text color="medium">
+          <!--<p>{{ record.createdAt | amDateFormat: 'YYYY-MM-DD hh:mm a'}}</p>-->
+          <p>Date: {{ record.createAt | amDateFormat: 'YYYY-MM-DD hh:mm a'}}</p>
+        </ion-text>
+        <ion-text>
+          <p>You Paid <strong>{{currency}} {{ record.amount }}/=</strong>
+            Status: <code style="background-color: #82c300; border-radius: 10px; padding: 2px!important;">{{ record.status}}</code>
+          </p>
+          <p *ngIf="record.type == 'cashless_deposit'">Ref: {{record.createAt }} Type: Wallet</p>
+          <p>TelId{{ record.telecomId }} TXNID: {{ record.transactionId}}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
