@@ -116,8 +116,8 @@ export class CashlessPage implements OnInit {
                                 // --- Get Money from mobile money to wallet == PENDING
                                 // Add Logic here ...
                                 const url = "https://www.easypay.co.ug/api/";
-                                const username = "37c8639b4912d708";
-                                const passwd = "bb85e4bd9df13c96";
+                                const username = "xxxxxxxxxxxxxxxxxxxx";
+                                const passwd = "xxxxxxxxxxxxxxxxxxxxxx";
 
                                 let smdata = {
                                     "username": username,
