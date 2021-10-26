@@ -3,14 +3,7 @@ export const environment = {
     firebase: {
 
         //    --- NEW SMARTCAB CONFIG---
-        apiKey: "AIzaSyCmOJdzXIavL61ogrq1TuUDKggKHRLGHsQ",
-        authDomain: "smartcabs-673a4.firebaseapp.com",
-        databaseURL: "https://smartcabs-673a4-default-rtdb.firebaseio.com",
-        projectId: "smartcabs-673a4",
-        storageBucket: "smartcabs-673a4.appspot.com",
-        messagingSenderId: "153864539731",
-        appId: "1:153864539731:web:4514c434257d433b6c80a6",
-        measurementId: "G-YP3PT476TB"
+        
     },
     adminEmail: 'babumotorsug@gmail.com' // you need to create new account in firebase auth manually
 };
