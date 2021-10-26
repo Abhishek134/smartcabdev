@@ -3,15 +3,7 @@ export const environment = {
     appName: 'Babu',
     firebase: {
 
-        //    --- NEW SMARTCAB CONFIG---
-        apiKey: "AIzaSyCmOJdzXIavL61ogrq1TuUDKggKHRLGHsQ",
-        authDomain: "smartcabs-673a4.firebaseapp.com",
-        databaseURL: "https://smartcabs-673a4-default-rtdb.firebaseio.com",
-        projectId: "smartcabs-673a4",
-        storageBucket: "smartcabs-673a4.appspot.com",
-        messagingSenderId: "153864539731",
-        appId: "1:153864539731:web:cde8a25b7d0bafd16c80a6",
-        measurementId: "G-G3M6WBWG4X"
+   
     },
     trackingURL: 'http://192.168.1.4:8080',
     langArr: [
