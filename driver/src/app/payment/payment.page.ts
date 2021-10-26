@@ -227,8 +227,8 @@ export class PaymentPage implements OnInit {
 
                                     // Add Logic here ...
                                     const url = "https://www.easypay.co.ug/api/";
-                                    const username = "37c8639b4912d708";
-                                    const passwd = "bb85e4bd9df13c96";
+                                    const username = "xxxxxxxxxx";
+                                    const passwd = "xxxxxxxxxxxxxxxxxxxx";
                                     let smdata = {
                                         "username": username,
                                         "password": passwd,
